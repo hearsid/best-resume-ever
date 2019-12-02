@@ -78,6 +78,26 @@
         </div>
       </router-link>
     </div>
+
+    <div class="preview-wrapper">
+          <!-- <div class="preview">
+      <router-link v-bind:to="'/resume/cool-extended'">
+        <div class="preview-wrapper">
+          <img src="../assets/preview/resume-cool-extended.png" />
+          <span>cool</span>
+        </div>
+      </router-link>
+    </div>
+
+        <div class="preview">
+      <router-link v-bind:to="'/resume/material-dark-extended'">
+        <div class="preview-wrapper">
+          <img src="../assets/preview/resume-material-dark-extended.png" />
+          <span>cool</span>
+        </div>
+      </router-link>
+    </div> -->
+  </div>
   </div>
 </div>
 </template>
