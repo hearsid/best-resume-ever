@@ -46,7 +46,7 @@ skills:
   level: 90
 - name: Node.js
   level: 70
-- name: Angular 2
+- name: Angular
   level: 80
 - name: TypeScript
   level: 80
@@ -101,11 +101,33 @@ contributions:
   description: Angular1 vs angular2 performance analysis with statistics.
   url: http://medium.com/@hearsid
 
+certifications:
+- name: Creating your first spring boot application
+  url: https://drive.google.com/drive/folders/1OJiqjEm9IsZxJJR1TIjNn8wFFqFJL8dd?usp=sharing
+  webIcon: pluralsight
+
+- name: Spring Jpa Hibernate
+  url: https://drive.google.com/drive/folders/1OJiqjEm9IsZxJJR1TIjNn8wFFqFJL8dd?usp=sharing
+  webIcon: pluralsight
+
+- name: Angular state management with redux
+  url: https://drive.google.com/drive/folders/1OJiqjEm9IsZxJJR1TIjNn8wFFqFJL8dd?usp=sharing
+  webIcon: pluralsight
+
+- name: Docker for web developers
+  url: https://drive.google.com/drive/folders/1OJiqjEm9IsZxJJR1TIjNn8wFFqFJL8dd?usp=sharing
+  webIcon: pluralsight
+
+- name: Machine Learning A-Z
+  url: https://www.udemy.com/certificate/UC-U52KNXGZ/
+  webIcon: udemy
+
+
 contact:
   email: hearsid@gmail.com
   phone: 9901219040
   city: Bangalore
-  website: hearsid.com
+  website: http://hearsid.com
   github: hearsid
   stackoverflow: hearsid
   medium: hearsid

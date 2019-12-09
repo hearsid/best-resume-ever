@@ -1,18 +1,74 @@
 <template>
   <div class="resume">
     <div class="banner">
-      <div
-        class="banner__fullname"
-      >{{ person.name.first }} {{ person.name.middle }} {{ person.name.last }}</div>
-      <div class="banner__position">{{ person.position }}</div>
+      <div class="banner__info">
+        <div
+          class="banner__fullname"
+        >{{ person.name.first }} {{ person.name.middle }} {{ person.name.last }}</div>
+        <div class="banner__position">{{ person.position }}</div>
+      </div>
+      <div class="banner__contact">
+        <div class="section-link">
+          <i class="section-link__icon material-icons">business</i>
+          {{ person.contact.city }}
+        </div>
+
+        <a class="section-link" :href="contactLinks.email">
+          <i class="section-link__icon material-icons">mail</i>
+          {{ person.contact.email }}
+        </a>
+
+        <div class="section-link">
+          <i class="section-link__icon material-icons">phone</i>
+          {{ person.contact.phone }}
+        </div>
+      </div>
       <!-- <div
         v-if="person.birth"
         class="banner__location"
-      >{{ lang.born }} {{person.birth.year}} {{ lang.bornIn }} {{person.birth.location}}</div> -->
+      >{{ lang.born }} {{person.birth.year}} {{ lang.bornIn }} {{person.birth.location}}</div>-->
     </div>
 
     <div class="content">
       <div class="content__left">
+        <div class="section">
+          <div class="section-headline">{{ lang.network }}</div>
+
+          <div class="section-content section-content--plain social">
+            <a v-if="person.contact.website" class="section-link" :href="person.contact.website">
+              <i class="section-link__icon fa fa-globe"></i>
+            </a>
+
+            <a v-if="person.contact.linkedin" class="section-link" :href="contactLinks.linkedin">
+              <i class="section-link__icon fab fa-linkedin"></i>
+            </a>
+
+            <a v-if="person.contact.github" class="section-link" :href="contactLinks.github">
+              <i class="section-link__icon fab fa-github"></i>
+            </a>
+
+            <a v-if="person.contact.medium" class="section-link" :href="contactLinks.medium">
+              <i class="section-link__icon fab fa-medium"></i>
+            </a>
+
+            <a
+              v-if="person.contact.stackoverflow"
+              class="section-link"
+              :href="contactLinks.stackoverflow"
+            >
+              <i class="section-link__icon fab fa-stack-overflow"></i>
+            </a>
+
+            <a
+              v-if="person.contact.stackoverflow"
+              class="section-link"
+              :href="contactLinks.hackerrank"
+            >
+              <i class="section-link__icon fab fa-hackerrank"></i>
+            </a>
+          </div>
+        </div>
+
         <div v-if="person.skills" class="section">
           <div class="section-headline">{{ lang.skills }}</div>
 
@@ -28,56 +84,6 @@
           </div>
         </div>
 
-        <div class="section">
-          <div class="section-headline">{{ lang.contact }}</div>
-
-          <div class="section-content section-content--plain">
-            <div class="section-link">
-              <i class="section-link__icon material-icons">business</i>
-              {{ person.contact.city }}
-            </div>
-
-            <a class="section-link" :href="contactLinks.email">
-              <i class="section-link__icon material-icons">mail</i>
-              {{ person.contact.email }}
-            </a>
-
-            <div class="section-link">
-              <i class="section-link__icon material-icons">phone</i>
-              {{ person.contact.phone }}
-            </div>
-
-            <a v-if="person.contact.website" class="section-link" :href="person.contact.website">
-              <i class="section-link__icon fa fa-globe"></i>
-              {{ person.contact.website }}
-            </a>
-
-            <a v-if="person.contact.linkedin" class="section-link" :href="contactLinks.linkedin">
-              <i class="section-link__icon fab fa-linkedin"></i>
-              {{ person.contact.linkedin }}
-            </a>
-
-            <a v-if="person.contact.github" class="section-link" :href="contactLinks.github">
-              <i class="section-link__icon fab fa-github"></i>
-              {{ person.contact.github }}
-            </a>
-
-            <a v-if="person.contact.medium" class="section-link" :href="contactLinks.medium">
-              <i class="section-link__icon fab fa-medium"></i>
-              {{ person.contact.medium }}
-            </a>
-
-            <a v-if="person.contact.stackoverflow" class="section-link" :href="contactLinks.stackoverflow">
-              <i class="section-link__icon fab fa-stack-overflow"></i>
-              {{ person.contact.stackoverflow }}
-            </a>
-
-            <a v-if="person.contact.stackoverflow" class="section-link" :href="contactLinks.hackerrank">
-              <i class="section-link__icon fab fa-hackerrank"></i>
-              {{ person.contact.hackerrank }}
-            </a>
-          </div>
-        </div>
         <div class="section">
           <div class="section-headline">{{ lang.about }}</div>
 
@@ -97,30 +103,26 @@
             {{ lang.experience }}
           </div>
 
-          <div class="section-content">
-            <div
-              v-for="(experience, index) in person.experience"
-              :key="index"
-              class="section-content__item"
-              :href="experience.website"
-            >
-              <md-card>
-                <md-card-header>
-                  <div class="md-subhead">{{ experience.position }}</div>
-                  <div class="md-title">{{ experience.company }}</div>
-                </md-card-header>
-
-                <md-card-content>
-                  <span class="section-content__subheader">
-                    <span class="section-content__plain">{{ experience.location }}</span>
-                  </span>
-
-                  <div class="section-content__text">{{ experience.timeperiod }}</div>
-                  <span class="section-content__text--light">{{ experience.description }}</span>
-                </md-card-content>
-              </md-card>
-            </div>
-          </div>
+          <md-card>
+            <md-list>
+              <div
+                v-for="(experience, index) in person.experience"
+                :key="index"
+                class="section-content__item"
+                :href="experience.website"
+              >
+                <md-list-item class="md-list-item-content">
+                  <div>
+                    <!-- <div class="md-subhead">{{ experience.position }}</div> -->
+                    <div class="md-title">{{ experience.company }}</div>
+                    <div class="md-caption">{{ experience.timeperiod }}</div>
+                    <div class="md-body-1">{{ experience.description }}</div>
+                  </div>
+                </md-list-item>
+                <md-divider v-if="index !== person.experience.length - 1"></md-divider>
+              </div>
+            </md-list>
+          </md-card>
         </div>
 
         <div class="section">
@@ -129,52 +131,53 @@
             {{ lang.education }}
           </div>
 
-          <div class="section-content">
-            <div
-              v-for="(education, index) in person.education"
-              class="section-content__item"
-              :key="index"
-              :href="education.website"
-            >
-              <md-card>
-                <md-card-header>
-                  <div class="md-subhead">{{ education.school }}</div>
-                  <div class="md-title">{{ education.degree}}</div>
-                </md-card-header>
-
-                <md-card-content>
-                  <div class="section-content__text">{{ education.timeperiod }}</div>
-                  <span class="section-content__text--light">{{ education.description }}</span>
-                </md-card-content>
-              </md-card>
-            </div>
-          </div>
+          <md-card>
+            <md-list>
+              <div
+                v-for="(education, index) in person.education"
+                :key="index"
+                class="section-content__item"
+                :href="education.website"
+              >
+                <md-list-item>
+                  <div>
+                    <!-- <div class="md-subhead">{{ experience.position }}</div> -->
+                    <div class="md-title">{{ education.school }}</div>
+                    <div class="md-caption">{{ education.timeperiod }}</div>
+                    <div class="md-body-1">{{ education.description }}</div>
+                  </div>
+                </md-list-item>
+                <md-divider v-if="index !== person.education.length - 1"></md-divider>
+              </div>
+            </md-list>
+          </md-card>
         </div>
-
+        <div class="pagebreak"> </div>
         <div v-if="person.projects" class="section">
           <div class="section-headline">
             <i class="section-headline__icon material-icons">code</i>
             {{ lang.projects }}
           </div>
 
-          
-          <div class="section-content">
-            <div
-              v-for="(project, index) in person.projects"
-              :key="index"
-              :href="project.url"
-            >
-              <md-card>
-                <md-card-header>
-                  <div class="md-title">{{ project.name }}</div>
-                </md-card-header>
-                <md-card-content>
-                  <div class="section-content__text">{{ project.platform }}</div>
-                  <span class="section-content__text--light">{{ project.description }}</span>
-                </md-card-content>
-              </md-card>
-            </div>
-          </div>
+          <md-card>
+            <md-list>
+              <div
+                v-for="(project, index) in person.projects"
+                :key="index"
+                class="section-content__item"
+                :href="project.url"
+              >
+                <md-list-item>
+                  <div>
+                    <div class="md-title">{{ project.name }}</div>
+                    <div class="md-caption">{{ project.platform }}</div>
+                    <div class="md-body-1">{{ project.description }}</div>
+                  </div>
+                </md-list-item>
+                <md-divider v-if="index !== person.projects.length - 1"></md-divider>
+              </div>
+            </md-list>
+          </md-card>
         </div>
 
         <div v-if="person.contributions" class="section">
@@ -183,25 +186,53 @@
             {{lang.contributions}}
           </div>
 
-          <div class="section-content-grid">
-            <div
-              v-for="(contribution, index) in person.contributions"
-              class="section-content"
-              :key="index"
-              :href="contribution.url"
-            >
+          <md-card>
+            <md-list>
+              <div
+                v-for="(contribution, index) in person.contributions"
+                :key="index"
+                class="section-content__item"
+                :href="contribution.url"
+              >
+                <md-list-item>
+                  <div>
+                    <div class="md-title">{{ contribution.name }}</div>
+                    <div class="md-caption">{{ contribution.url }}</div>
+                    <div class="md-body-1">{{ contribution.description }}</div>
+                  </div>
+                </md-list-item>
+                <md-divider v-if="index !== person.contributions.length - 1"></md-divider>
+              </div>
+            </md-list>
+          </md-card>
+        </div>
 
-              <md-card>
-                <md-card-header>
-                  <div class="md-title">{{ contribution.name }}</div>
-                </md-card-header>
-                <md-card-content>
-                  <div class="section-content__text">{{ contribution.url }}</div>
-                  <span class="section-content__text--light">{{ contribution.description }}</span>
-                </md-card-content>
-              </md-card>
-            </div>
+        <div v-if="person.certifications" class="section">
+          <div class="section-headline">
+            <i class="section-headline__icon fa fa-book"></i>
+            {{lang.certifications}}
           </div>
+
+          <md-card>
+            <md-list>
+              <div
+                v-for="(certification, index) in person.certifications"
+                :key="index"
+              >
+                <md-list-item>
+                  <div>
+                    <!-- <img
+                      v-bind:src="getCertificationCompany(certification)"
+                      class="certification-icon"
+                      alt="certification website url"
+                    /> -->
+                    <i class="fa fa-bookmark"></i>
+                    <a class="md-body-1 certification-link" :href="certification.url">{{ certification.name }}</a>
+                  </div>
+                </md-list-item>
+              </div>
+            </md-list>
+          </md-card>
         </div>
       </div>
     </div>
@@ -218,7 +249,7 @@ const name = 'cool-extended';
 export default Vue.component(name, getVueOptions(name));
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @accent-color: #34495e;
 @banner-color: #039be5;
 @banner-height: 120px;
@@ -226,6 +257,15 @@ export default Vue.component(name, getVueOptions(name));
 @picture-offset: 55px;
 @base-padding: 30px;
 @left-column-width: 340px;
+
+@media print {
+    // .pagebreak { page-break-before: always; }
+    .md-card { box-shadow: none !important; border: 1px solid gray;}
+}
+
+.md-title {
+  font-size: 18px;
+}
 
 a {
   color: inherit;
@@ -243,10 +283,21 @@ a {
   font-size: 0.9em;
 }
 
+.certification-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.certification-link {
+  text-decoration: none !important;
+  color: black !important;
+}
+
 .picture {
   position: absolute;
   top: @banner-height - @picture-offset;
-  left: 270px; //@left-column-width + @base-padding * 2 - @picture-size / 2;
+  left: 157px; // @left-column-width + @base-padding * 2 - @picture-size / 2;
   height: @picture-size;
   width: @picture-size;
   border-radius: 50%;
@@ -255,10 +306,13 @@ a {
   z-index: 2;
 }
 
+.md-list-item-content {
+  white-space: normal !important;
+}
+
 .banner {
   // width: calc(100% - @base-padding * 2);
   height: @banner-height;
-  padding: @base-padding;
   background-color: @banner-color;
   /*
     background-image: url('../../resume/banner.png');
@@ -266,6 +320,16 @@ a {
     background-size: cover;
   */
   color: white;
+  display: flex;
+  align-items: center;
+
+  & > div {
+    display: inline-block;
+  }
+
+  &__info {
+    padding: @base-padding;
+  }
 
   &__fullname {
     font-size: 32px;
@@ -274,9 +338,13 @@ a {
   &__position {
     font-size: 16px;
   }
+  &__contact {
+    margin-left: auto;
+    padding: 10px;
 
-  &__location {
-    font-size: 12px;
+    .section-link {
+      margin: 0px;
+    }
   }
 }
 
@@ -288,11 +356,11 @@ a {
   &__left,
   &__right {
     // height: 100%;
-    padding: @base-padding;
+    padding: 20px;
   }
 
   &__left {
-    width: @left-column-width;
+    width: 30%;
     color: rgba(255, 255, 255, 0.59);
     background-color: @accent-color;
 
@@ -303,6 +371,13 @@ a {
 
   &__right {
     flex: 1;
+    width: 70%;
+  }
+}
+
+.social {
+  .section-link {
+    display: inline-block !important;
   }
 }
 

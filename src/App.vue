@@ -13,13 +13,14 @@ export default {
 <style>
 /* Add new fonts here */
 @import '../node_modules/roboto-fontface/css/roboto/roboto-fontface.css';
-/* @import '../node_modules/font-awesome/css/font-awesome.css'; */
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 @import '../node_modules/material-design-icons/iconfont/material-icons.css';
 @import '../node_modules/source-sans-pro/source-sans-pro.css';
 @import '../node_modules/npm-font-open-sans/open-sans.css';
 @import '../node_modules/npm-font-open-sans-condensed/open-sans-condensed.css';
 @import '../node_modules/raleway-webfont/raleway.css';
+@import '../node_modules/vue-material/dist/vue-material.min.css';
+@import '../node_modules/vue-material/dist/theme/default.css';
 
 body {
   padding: 0;
@@ -27,4 +28,7 @@ body {
   overflow-x: hidden;
   background: #CCCCCC;
 }
+ html, body {
+        height: 100%;
+    }
 </style>

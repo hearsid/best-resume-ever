@@ -70,7 +70,10 @@ const convert = async () => {
             }
             await page.pdf({
                 path: fullDirectoryPath + dir.name + '.pdf',
-                format: 'A4'
+                // format: 'A4',
+                printBackground: true,
+                width: '21cm',
+                height: '634mm'
             });
             await browser.close();
         });

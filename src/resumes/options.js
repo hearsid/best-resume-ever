@@ -16,6 +16,11 @@ function getVueOptions(name) {
                 terms: terms,
             };
         },
+        methods: {
+            getCertificationCompany: function (cert) {
+                return './assets/img/' + cert.webIcon + '-icon.png';
+            }
+        },
         computed: {
             lang() {
                 const defaultLang = this.terms.en;
