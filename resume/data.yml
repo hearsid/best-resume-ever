@@ -1,70 +1,83 @@
 /* #*/ export const PERSON = `
 name:
-  first: John
+  first: Siddharth 
   middle:
-  last: Doe
-about: Hi, my name is John Doe. I"m just about the most boring type of person you could
-       possibly imagine. I like collecting leaves from the tree in my back yard and documenting
-       each time I eat a peanut that is non-uniform. I am not a robot. Please hire me.
+  last: Sharma
+about: I take ownership of the applications/ modules I work on. I consider myself a tech enthusiast and like to attend meetup related to same. 
+        While my work focuses on creating web applications, 
+        I have explored area of machine learning and fintech. I could tell you about it, but THAT would NOT be a “length-limited” conversation!
 position: Software Developer
 
 birth:
-  year: 1990
-  location: New York
+  year: 1992
+  location: Jaipur, India
 
 experience:
-- company: Company A
-  position: Developer
-  timeperiod: since January 2016
-  description: Programming and watching cute cat videos.
-  website: https://example.com
+- company: Morgan Stanley (Consultant)
+  position: Software developer
+  timeperiod: since April 2017
+  description: Conversion of existing applications with angular for client side and revamping server side to expose restful api with java.
 
-- company: Company B
+- company: Tapzo
   position: Frontend Developer
-  timeperiod: January 2015 - December 2015
-  description: Fulfillment of extremely important tasks.
+  timeperiod: Decemeber 2015 - April 2017
+  description: Building features for a high end B2B product with react and angular in client side and nodejs in server side.
 
-- company: Company C
-  position: Trainee
-  timeperiod: March 2014 - December 2014
-  description: Making coffee and baking cookies.
+- company: Hearsid
+  position: Freelancer/ Entrepreneur 
+  timeperiod: May 2013 - December 2015
+  description: Created many websites which helped companies to show their online presence and advertise their business.
+          Created and managed an online webiste website for a client in Europe.
+          Created a webapp and mobile app for car brokers to track their clients interest and respond to them on time.
 
 education:
-- degree: Master of Arts
-  timeperiod: March 2012 - December 2013
-  description: Major in Hacking and Computer Penetration, University A, New York, USA.
-  website: https://example.com
-
-- degree: Bachelor of Science
-  timeperiod: March 2009 - December 2011
-  description: Major in Engineering, University B, Los Angeles, USA.
+- degree: B.Tech.
+  timeperiod: June 2009  - July 2013
+  school: Rajasthan Technical University
+  description: B.Tech. in Electronics and Communication.
 
 # skill level goes 0 to 100
 skills:
 - name: HTML5
-  level: 99
+  level: 90
 - name: CSS3
-  level: 95
+  level: 90
 - name: JavaScript
-  level: 97
+  level: 90
 - name: Node.js
-  level: 93
-- name: Angular 2
-  level: 60
+  level: 70
+- name: Angular
+  level: 80
 - name: TypeScript
   level: 80
-- name: ES.Next
+- name: React
   level: 70
-- name: Docker
-  level: 99
-knowledge: Also proficient in Adobe Photoshop and Illustrator, grew up bilingual
-  (English and Klingon).
 
 projects:
-- name: best-resume-ever
-  platform: Vue
-  description: 👔 💼 Build fast 🚀 and easy multiple beautiful resumes and create your best CV ever! Made with Vue and LESS.
-  url: https://github.com/salomonelli/best-resume-ever
+- name: Transaction Manager
+  platform: Angular, Java
+  description: Revamped Transaction Manager application which was a part of the prime brokerage department from from flex to angular with ngrx. It has a few screens including new entry, inquiry and exceptions screen. New entry screen allowed traders to book a new trade entering all the information about the trade like asset type, custodian broker, executing broker, security etc. whereas inquiry and exceptions screen gave the information about the status of the trade booked in the screen. The trade information was given in a grids and records length went upto a limit of upto 50 thousand or more records.
+
+- name: Colaterized Loan Obligation 
+  platform: Angular, Java
+  description: Allowed to view the CLO performance by showing the information in a grid and in form of a chart, business logic was included to determine what data to show.
+
+- name: Preditive analysis 
+  platform: Python
+  description: Worked on a machine learning project to predict potential defaulters in the internal auditing.
+
+- name: Onedirect
+  platform: React, Angular, nodejs, Java
+  description: Worked on a B2B product used by many companies to respond to the consumer complaints on social media, the application acted as a social media aggregator taking the posts from facebook, twitter, playstore and showing them on a common dashboard so the customer care can address the compaints easily. Cients included indian railways, britania and more.
+  website: Onedirect.in
+
+- name: Caretaker app
+  platform: React, Java, Spring, Hibernate
+  description: Creating API which were integrated with the web app and android/iPhone apps using Java and dashboard using react.
+
+- name: Web/ Mobile apps
+  platform: React, Angular, nodejs, Java
+  description: I rented a desk at a co-working place called PIIC in Pune and started my journey as a freelance software developer and explored the business oportunites in the same. Worked on angular, python, java and nodejs.
 
 hobbies:
 - name: Video Games
@@ -76,17 +89,50 @@ hobbies:
   url: https://example.com
 
 contributions:
-- name: best-resume-ever
-  description: 👔 💼 Build fast 🚀 and easy multiple beautiful resumes.
-  url: https://github.com/salomonelli/best-resume-ever
+- name: Relax
+  description: Contributed towards making a good and reliable CMS based on reactjs, graphql and nodejs.
+  url: http://getrelax.com/
+
+- name: Github
+  description: Contributions to some open source projects.
+  url: http://github.com/hearsid
+
+- name: Medium
+  description: Angular1 vs angular2 performance analysis with statistics.
+  url: http://medium.com/@hearsid
+
+certifications:
+- name: Creating your first spring boot application
+  url: https://drive.google.com/drive/folders/1OJiqjEm9IsZxJJR1TIjNn8wFFqFJL8dd?usp=sharing
+  webIcon: pluralsight
+
+- name: Spring Jpa Hibernate
+  url: https://drive.google.com/drive/folders/1OJiqjEm9IsZxJJR1TIjNn8wFFqFJL8dd?usp=sharing
+  webIcon: pluralsight
+
+- name: Angular state management with redux
+  url: https://drive.google.com/drive/folders/1OJiqjEm9IsZxJJR1TIjNn8wFFqFJL8dd?usp=sharing
+  webIcon: pluralsight
+
+- name: Docker for web developers
+  url: https://drive.google.com/drive/folders/1OJiqjEm9IsZxJJR1TIjNn8wFFqFJL8dd?usp=sharing
+  webIcon: pluralsight
+
+- name: Machine Learning A-Z
+  url: https://www.udemy.com/certificate/UC-U52KNXGZ/
+  webIcon: udemy
+
 
 contact:
-  email: john.doe@email.com
-  phone: 0123 456789
-  street: 1234 Broadway
-  city: New York
-  website: johndoe.com
-  github: johnyD
+  email: hearsid@gmail.com
+  phone: 9901219040
+  city: Bangalore
+  website: http://hearsid.com
+  github: hearsid
+  stackoverflow: hearsid
+  medium: hearsid
+  linkedin: hearsid
+  hackerrank: hearsid
 # en, de, fr, pt, ca, cn, it, es, th, pt-br, ru, sv, id, hu, pl, ja, ka, nl, he, zh-tw, lt, ko, el, nb-no
 lang: en
 `
