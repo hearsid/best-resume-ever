@@ -1,0 +1,221 @@
+/* #*/ export const JSON = `
+basics:
+  name: Siddharth Sharma
+  label: Programmer
+  picture: https://instagram.fblr1-3.fna.fbcdn.net/v/t51.2885-19/s320x320/21689002_430989530630809_6661745231035105280_n.jpg?_nc_ht=instagram.fblr1-3.fna.fbcdn.net&_nc_ohc=4H6cAtYpNlsAX8tV3tH&oh=dadf08925276d22ef2dc231891349ef0&oe=5E88EC7F
+  email: hearsid@gmail.com
+  summary: I take ownership of the applications/ modules I work on. I consider myself
+    a tech enthusiast and like to attend meetup related to same. While my work focuses
+    on creating web applications, I have explored area of machine learning and fintech.
+    I could tell you about it, but THAT would NOT be a “length-limited” conversation!
+  location:
+    city: Bangalore
+    countryCode: "(IND)"
+    region: Karnataka
+  profiles:
+  - network: Linkedin
+    username: Linkedin
+    url: https://www.linkedin.com/in/hearsid/
+  - network: Github
+    username: Gtihub
+    url: https://github.com/hearsid
+  - network: Stack Overflow
+    username: StackOverflow
+    url: http://stackoverflow.com/users/1685480/siddharth-sharma
+  - network: HackerRank
+    username: HackerRank
+    url: https://www.hackerrank.com/hearsid
+work:
+- company: Morgan Stanley (Consultant)
+  position: Software developer
+  startDate: '2017-04-22'
+  endDate: ''
+  summary: Conversion of existing applications with angular for client side and revamping
+    server side to expose restful api with java
+  highlights:
+  - 'Transaction Manager app: Revamped Transaction Manager application which was a
+    part of the prime brokerage department from from flex to angular with ngrx. It
+    has a few screens including new entry, inquiry and exceptions screen. New entry
+    screen allowed traders to book a new trade entering all the information about
+    the trade like asset type, custodian broker, executing broker, security etc. whereas
+    inquiry and exceptions screen gave the information about the status of the trade
+    booked in the screen. The trade information was given in a grids and records length
+    went upto a limit of upto 50 thousand or more records.'
+  - 'Colaterized Loan Obligation app:  Allowed to view the CLO performance by showing
+    the information in a grid and in form of a chart, business logic was included
+    to determine what data to show.'
+  - 'Preditive analysis app: Worked on a machine learning project to predict potential
+    defaulters in the internal auditing'
+  - Integrated payment control application
+- company: Tapzo
+  position: Front end developer
+  website: http://onedirect.in
+  startDate: '2015-12-28'
+  endDate: '2017-04-22'
+  summary: Building features for a high end B2B product with react in client side
+    and nodejs in server side
+  highlights:
+  - 'OneDirect: Worked on a B2B product used by many companies to respond to the consumer
+    complaints on social media, the application acted as a social media aggregator
+    taking the posts from facebook, twitter, playstore and showing them on a common
+    dashboard so the customer care can address the compaints easily. Cients included
+    indian railways, britania and more.'
+  - 'POC: Did POC for the same in react'
+  - 'OneDirect Admin: Created the admin dashboard for the same in react-redux and
+    material UI'
+- company: Betaworks Technologies
+  position: Full stack developer
+  website: http://ideaplunge.in
+  startDate: '2015-06-22'
+  endDate: '2015-12-18'
+  summary: Built application for mid scale companies looking to use technologies to
+    grow their revenues
+  highlights:
+  - Created an Uber like app to make it easy for parents to find a cartaker around
+    them.
+  - An application for Candian sports fan to find and follow the teams/players they
+    liked.
+  - A chatting application similar to whatsapp.
+- company: Hearsid
+  position: CEO/President
+  website: http://hearsid.com
+  startDate: '2013-05-01'
+  endDate: '2015-06-22'
+  summary: I was working from PIIC in Pune and started my journey as a freelance software
+    developer provided technology support to few growing startups in US and Europe.
+  highlights:
+  - Created many websites which helped companies to show their online presence and
+    advertise their business
+  - Created and managed an online webiste website for a client in Europe.
+  - Created a webapp and mobile app for car brokers to track their clients interest
+    and respond to them on time
+volunteer:
+- organization: CSP- Choti Si Phahal
+  position: Volunteer
+  startDate: '2014-01-01'
+  summary: We are a group of friends who conduct various events to help old age homes
+    and ophanages. Please feel free to contact me if you would like to attend our
+    visits and help in giving back to the society.
+- organization: Toastmasters
+  position: Member
+  startDate: '2015-01-01'
+  summary: Gave upto CC2 in toastmasters and plan to keep trying to grow my leadership
+    and communication skills with help of club and club members.
+openSourceContributions:
+- organization: Relax
+  website: http://getrelax.com/
+  summary: Contributed towards making a good and reliable CMS based on reactjs, graphql
+    and nodejs.
+- organization: Github
+  website: http://github.com/hearsid
+  summary: Contributions to some open source projects.
+- organization: Medium
+  website: http://medium.com/@hearsid
+  summary: Angular1 vs angular2 performance analysis with statistics.
+education:
+- institution: Rajasthan Technical University
+  area: Electronics and Communication
+  studyType: B.Tech.
+  startDate: '2009-07-01'
+  endDate: '2013-06-01'
+- institution: Saint Xavier's School (Jaipur)
+  area: Maths and Science
+  studyType: Senior Secondary
+  startDate: '2007-06-01'
+  endDate: '2009-07-01'
+awards:
+- title: Presented research paper on Artificial Intelligence in NCAT at PIET.
+  date: '2011-11-26'
+  awarder: PIET
+  summary: Artificial intelligence has been a growing technology from my college time,
+    presented basics and applications of AI.
+- title: Presented research paper on Embryonics in national conference on rural development
+    at JNIT.
+  date: '2012-02-28'
+  awarder: JNIT
+  summary: Repairing of machines and devices needs a lot of skill and time, did research
+    and presented how this problem can be solved.
+- title: Participated in India Intelligence Contest held at JKLU.
+  date: '2012-02-11'
+  awarder: JKLU
+  summary: Participated and won various competitions related to creation and operation
+    of robos like robo war.
+publications:
+- name: Angular performace measurement using chrome devtools with statistics
+  publisher: Medium
+  releaseDate: ''
+  website: http://medium.com/@hearsid
+  summary: Angular performance analysis with statistics showing heap size, loading
+    time and memory consumed at various stages.
+achievements:
+- Have Gold badge in more than 4 tracks on hackerrank.
+- Have successfully completed development and career related courses on Udemy, Coursera
+  and pluralsight.
+skills:
+- name: Web Development (Client-side)
+  level: Master
+  keywords:
+  - HTML
+  - CSS
+  - Redux
+  - Angular
+  - TypeScript
+- name: Web Development (Client-side)
+  level: Intermediate
+  keywords:
+  - React
+  - Javascript
+- name: Programming
+  level: Intermediate
+  keywords:
+  - Python
+  - Nodejs
+  - Algorithms
+  - Data Structures
+  - Java
+  - Design patterns
+  - Problem solving
+  - Git
+- name: Practices
+  level: Master
+  keywords:
+  - Jira
+  - Agile methodology
+- name: E2E and Unit testing
+  level: Master
+  keywords:
+  - Karma
+  - Jasmine
+  - Selenium
+  - Protractor
+- name: Domain knowledge
+  level: Intermediate
+  keywords:
+  - Investment banking
+  - Social media aggregator
+  - Fintech
+  - Health/ Geolocation
+languages:
+- language: English
+  fluency: Intermediate
+- language: Hindi
+  fluency: Master
+- language: German
+  fluency: Elementary
+- language: Spanish
+  fluency: Elementary
+interests:
+- name: TV Serials
+  keywords:
+  - Gotham
+  - FRIENDS
+  - How I met your mother
+  - Cosmos
+- name: Reading
+  keywords:
+  - Technology
+  - Psychology
+  - News
+  - Business/Finance market
+references: []
+`

@@ -3,14 +3,24 @@ import {
     PERSON
 } from '../../resume/data.yml';
 import {
+    JSON
+} from '../../resume/json-to-yaml-data.yml';
+import {
     terms
 } from '../terms';
 
+
 // Called by templates to decrease redundancy
-function getVueOptions (name) {
+function getVueOptions (name, otherSource = false) {
     const opt = {
         name: name,
         data () {
+            if (otherSource) {
+                return {
+                    person: yaml.load(JSON),
+                    terms: terms,
+                };
+            }
             return {
                 person: yaml.load(PERSON),
                 terms: terms,
