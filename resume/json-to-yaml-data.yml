@@ -12,6 +12,9 @@ basics:
     city: Bangalore
     countryCode: "(IND)"
     region: Karnataka
+  website: hearsid.com 
+  phone: 9901219040
+
   profiles:
   - network: Linkedin
     username: Linkedin
@@ -218,4 +221,5 @@ interests:
   - News
   - Business/Finance market
 references: []
+projects: []
 `

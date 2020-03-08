@@ -66,7 +66,9 @@ app.use(hotMiddleware)
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+app.use(staticPath, express.static('./static'));
+const imageDir = path.resolve(__dirname, '..') + '/src/assets/social-icons';
+app.use(express.static(imageDir));
 
 var uri = 'http://localhost:' + port
 
@@ -77,7 +79,9 @@ var readyPromise = new Promise(resolve => {
 
 console.log('> Starting dev server...')
 devMiddleware.waitUntilValid(() => {
-  console.log('> Listening at ' + uri + '\n')
+  console.log('> Listening at ' + uri + '\n');
+  console.log(imageDir);
+
   // when env is testing, don't need open it
   if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
     opn(uri)

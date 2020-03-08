@@ -1,145 +1,148 @@
 <template>
-<div>
+<div id="resume">
     <header id="header" class="clear">
         <div v-if="basics.picture">
-            <img class="image" v-bind:src="image" v-bind:alt="name" />
+            <img class="image" v-bind:src="basics.picture" v-bind:alt="basics.name" />
             <div class="middle">
-                <h1 class="name">{{name}}</h1>
-                <h2 class="label">{{label}}</h2>
+                <h1 class="name">{{basics.name}}</h1>
+                <h2 class="label">{{basics.label}}</h2>
             </div>
         </div>
         <div v-else> 
             <div>
-                <h1 class="name">{{name}}</h1>
-                <h2 class="label">{{label}}</h2>
+                <h1 class="name">{{basics.name}}</h1>
+                <h2 class="label">{{basics.label}}</h2>
             </div>
         </div>
 
-        <div v-if="location">
+        <div v-if="basics.location">
             <span class="location">
-                <div v-if="address">
-                    <span class="address">{{address}},</span>
+                <div v-if="basics.address">
+                    <span class="address">{{basics.address}},</span>
                 </div>
-                <div v-if="postalCode">
-                    <span class="postalCode">{{postalCode}},</span>
+                <div v-if="basics.location.postalCode">
+                    <span class="postalCode">{{basics.location.postalCode}},</span>
                 </div>
-                <div v-if="city">
-                    <span class="city">{{city}},</span>
+                <div v-if="basics.location.city">
+                    <span class="city">{{basics.location.city}},</span>
                 </div>
-                <div v-if="region">
-                    <span class="region">{{region}}</span>
+                <div v-if="basics.location.region">
+                    <span class="region">{{basics.location.region}}</span>
                 </div>
-                <div v-if="countryCode">
-                    <span class="countryCode">{{countryCode}}</span>
+                <div v-if="basics.location.countryCode">
+                    <span class="countryCode">{{basics.location.countryCode}}</span>
                 </div>
             </span>
         </div>
 
-        <div v-if="birthDate">
+        <div v-if="basics.birthDate">
         </div>
 
         <div id="contact">
-            <div v-if="website">
+            <div v-if="basics.website">
                 <div class="website">
                     <span class="fas fa-external-link-alt"></span>
-                    <a target="_blank" v-bind:href="website">{{website}}</a>
+                    <a target="_blank" v-bind:href="basics.website">{{basics.website}}</a>
                 </div>
             </div>
-            <div v-if="email">
+            <div v-if="basics.email">
                 <div class="email">
                     <span class="far fa-envelope"></span>
-                    <a v-bind:href="'mailto:'+email">{{email}}</a>
+                    <a v-bind:href="'mailto:'+basics.email">{{basics.email}}</a>
                 </div>
             </div>
-            <div v-if="phone">
+            <div v-if="basics.phone">
                 <div class="phone">
                     <span class="fas fa-mobile-alt"></span>
-                    <a v-bind:href="'tel:'+phone">{{phone}}</a>
+                    <a v-bind:href="'tel:'+basics.phone">{{basics.phone}}</a>
                 </div>
             </div>
         </div>
 
-        <div v-if="profiles.length">
+        <div v-if="basics.profiles && basics.profiles.length">
             <div id="profiles">
-                <div v-for="(entity, index) in profiles" :key="index">
+                <span v-for="(network, index) in basics.profiles" :key="index">
                     <div class="item">
-                        <div v-if="network">
-                            <div class="username">
-                                <span v-bind:class="'fab fa-'+network+' '+network+' '+social"></span>
-                                <div v-if="url">
+                        <span v-if="network">
+                            <span class="username">
+                               <!-- <span v-bind:class="'fa fa-'+network.network.toLowerCase()"></span> -->
+                               <img v-bind:src="'./src/assets/social-icons/'+network.network.toLowerCase()+'.png'"
+                                />
+                                <span v-if="network.url">
                                     <span class="url">
-                                        <a target="_blank" v-bind:href="url">{{username}}</a>
+                                        <a target="_blank" 
+                                        v-bind:href="network.url">{{network.username}}</a>
                                     </span>
-                                </div>
-                                <div v-else>
-                                    <span>{{username}}</span>
-                                </div>
-                            </div>
-                        </div>
+                                </span>
+                                <span v-else>
+                                    <span>{{network.username}}</span>
+                                </span>
+                            </span>
+                        </span>
                     </div>
-                </div>
+                </span>
             </div>
         </div>
     </header>
 
-    <div v-if=" summary">
+    <div v-if="basics.summary">
         <section class="section">
             <section class="main-summary">
-                <div>{{summary}}</div>
+                <div>{{basics.summary}}</div>
             </section>
         </section>
     </div>
 
-    <div v-if="resume.skills.length">
+    <div v-if="skills && skills.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Skills</h2>
             </header>
             <section id="skills">
-                <div v-for="(entity, index) in resume.skills" :key="index">
+                <span v-for="(skill, index) in skills" :key="index">
                     <div class="item">
-                        <div v-if="name">
+                        <div v-if="skill.name">
                             <h3 class="name">
-                                {{name}}
+                                {{skill.name}}
                             </h3>
                         </div>
-                        <div v-if="level">
+                        <div v-if="skill.level">
                             <div class="level">
-                                <div v-if="levelDisplay">
-                                    <em>{{levelDisplay}}</em>
+                                <div v-if="skill.levelDisplay">
+                                    <em>{{skill.levelDisplay}}</em>
                                 </div>
                                 <div v-else>
-                                    <em>{{level}}</em>
+                                    <em>{{skill.level}}</em>
                                 </div>
                                 <div class="bar"></div>
                             </div>
                         </div>
-                        <div v-if="keywords.length">
+                        <div v-if="skill.keywords && skill.keywords.length">
                             <ul class="keywords">
-                                <div v-for="(entity, index) in keywords" :key="index">
+                                <span v-for="(entity, index) in skill.keywords" :key="index">
                                     <li>{{entity}}</li>
-                                </div>
+                                </span>
                             </ul>
                         </div>
                     </div>
-                </div>
+                </span>
             </section>
         </section>
     </div>
 
-    <div v-if="resume.work.length">
+    <div v-if="work && work.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Work Experience
-                    <span class="item-count">({{resume.work.length}})</span></h2>
+                    <span class="item-count">({{work.length}})</span></h2>
             </header>
 
             <section id="work">
-                <div v-for="(entity, index) in resume.work" :key="index">
+                <div v-for="(company, index) in work" :key="index">
                     <section class="work-item">
-                        <div v-if="name">
+                        <div v-if="company.name">
 
-                            <div v-if="summary">
+                            <div v-if="company.summary">
                                 <div v-if="index === 0">
                                     <input v-bind:id="'work-item-'+index" 
                                     type="checkbox" class="toggle-item" checked="checked" />
@@ -151,17 +154,17 @@
                                 <label v-bind:for="'work-item-'+index"></label>
                             </div>
                             <header class="clear">
-                                <div v-if="position">
-                                    <div class="position">{{position}}</div>
+                                <div v-if="company.position">
+                                    <div class="position">{{company.position}}</div>
                                 </div>
-                                <div class=" company">{{name}}
+                                <div class=" company">{{company.name}}
                                 </div>
                                 <div class="date">
-                                    <div v-if="startDate">
-                                        <span class="startDate">{{startDate}}</span>
+                                    <div v-if="company.startDate">
+                                        <span class="startDate">{{company.startDate}}</span>
                                     </div>
-                                    <div v-if="endDate">
-                                        <span class="endDate">- {{endDate}}</span>
+                                    <div v-if="company.endDate">
+                                        <span class="endDate">- {{company.endDate}}</span>
                                     </div>
                                     <div v-else>
                                         <span class="endDate">- Current</span>
@@ -170,38 +173,38 @@
                             </header>
                         </div>
 
-                        <div v-if="location">
+                        <div v-if="company.location">
                             <span class="location">
                                 <span class="fas fa-map-marker-alt"></span>
-                                <div v-if="city">
-                                    <span class="city">{{city}},</span>
+                                <div v-if="company.city">
+                                    <span class="city">{{company.city}},</span>
                                 </div>
-                                <div v-if="countryCode">
-                                    <span class="countryCode">({{countryCode}})</span>
+                                <div v-if="company.countryCode">
+                                    <span class="countryCode">({{company.countryCode}})</span>
                                 </div>
-                                <div v-if="region">
-                                    <span class="region">{{region}}</span>
+                                <div v-if="company.region">
+                                    <span class="region">{{company.region}}</span>
                                 </div>
                             </span>
                         </div>
-                        <div v-if="website">
+                        <div v-if="company.website">
                             <span class="website">
-                                <a target="_blank" v-bind:href="website">{{website}}</a>
+                                <a target="_blank" v-bind:href="company.website">{{company.website}}</a>
                             </span> </div>
-                        <div v-if="keywords.length">
+                        <div v-if="company.keywords && company.keywords.length">
                             <ul class="keywords">
-                                <div v-for="(entity, index) in keywords" :key="index">
+                                <div v-for="(entity, index) in company.keywords" :key="index">
                                     <li>{{entity}}</li>
                                 </div>
                             </ul>
                         </div>
                         <div class="item" id="work-item">
-                            <div v-if="summary">
-                                <div class="summary">{{summary}}</div>
+                            <div v-if="company.summary">
+                                <div class="summary">{{company.summary}}</div>
                             </div>
-                            <div v-if="highlights.length">
+                            <div v-if="company.highlights && company.highlights.length">
                                 <ul class="highlights">
-                                    <div v-for="(entity, index) in highlights" :key="index">
+                                    <div v-for="(entity, index) in company.highlights" :key="index">
                                         <li>{{entity}}</li>
                                     </div>
                                 </ul>
@@ -213,17 +216,17 @@
         </section>
     </div>
 
-    <div v-if="resume.projects.length">
+    <div v-if="projects && projects.length">
         <div class="section">
             <header>
                 <h2 class='section-title'>Projects
-                    <span class="item-count">({{resume.projects.length}})</span>
+                    <span class="item-count">({{projects.length}})</span>
                 </h2>
             </header>
             <div id="projects">
-                <div v-for="(entity, index) in resume.projects" :key="index">
+                <div v-for="(project, index) in projects" :key="index">
                     <section class="project-item">
-                        <div v-if="summary">
+                        <div v-if="project.summary">
                             <div v-if="index === 0">
                                 <input v-bind:id="'project-item-'+index" 
                                 type="checkbox" class="toggle-item" checked="checked" />
@@ -238,13 +241,13 @@
                         <div v-if="name">
                             <header class="clear">
                                 <div v-if="name">
-                                    <div class="position">{{name}}</div>
+                                    <div class="position">{{project.name}}</div>
                                 </div>
                                 <div v-if=" startDate">
                                     <div class="date">
-                                        <span class="startDate">{{startDate}}</span>
+                                        <span class="startDate">{{project.startDate}}</span>
                                         <div v-if="endDate">
-                                            <span class="endDate">- {{endDate}}</span>
+                                            <span class="endDate">- {{project.endDate}}</span>
                                         </div>
                                         <div v-else>
                                             <span class="endDate">- Current</span>
@@ -253,41 +256,41 @@
                                 </div>
                             </header>
                         </div>
-                        <div v-if="location">
+                        <div v-if="project.location">
                             <span class="location">
                                 <span class="fas fa-map-marker-alt"></span>
-                                <div v-if="city">
-                                    <span class="city">{{city}},</span>
+                                <div v-if="project.city">
+                                    <span class="city">{{project.city}},</span>
                                 </div>
-                                <div v-if="countryCode">
-                                    <span class="countryCode">({{countryCode}})</span>
+                                <div v-if="project.countryCode">
+                                    <span class="countryCode">({{project.countryCode}})</span>
                                 </div>
-                                <div v-if="region">
+                                <div v-if="project.region">
                                     <span class="region">
-                                        {{region}}
+                                        {{project.region}}
                                     </span>
                                 </div>
                             </span>
                         </div>
-                        <div v-if="url">
+                        <div v-if="project.url">
                             <span class="website">
-                                <a target="_blank" v-bind:href="url">{{url}}</a>
+                                <a target="_blank" v-bind:href="project.url">{{project.url}}</a>
                             </span>
                         </div>
-                        <div v-if="keywords.length">
+                        <div v-if="project.keywords && project.keywords.length">
                             <ul class="keywords">
-                                <div v-for="(entity, index) in keywords" :key="index">
+                                <div v-for="(entity, index) in project.keywords" :key="index">
                                     <li>{{entity}}</li>
                                 </div>
                             </ul>
                         </div>
                         <div class="item">
-                            <div v-if="summary">
-                                <div class="summary">{{summary}}</div>
+                            <div v-if="project.summary">
+                                <div class="summary">{{project.summary}}</div>
                             </div>
-                            <div v-if="highlights.length">
+                            <div v-if="project.highlights && project.highlights.length">
                                 <ul class="highlights">
-                                    <div v-for="(entity, index) in highlights" :key="index">
+                                    <div v-for="(entity, index) in project.highlights" :key="index">
                                         <li>{{entity}}</li>
                                     </div>
                                 </ul>
@@ -299,17 +302,17 @@
         </div>
     </div>
 
-    <div v-if="resume.volunteer.length">
+    <div v-if="volunteer && volunteer.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Volunteer</h2>
             </header>
             <section id="volunteer">
-                <div v-for="(entity, index) in resume.volunteer" :key="index">
+                <div v-for="(activity, index) in volunteer" :key="index">
                     <section class="volunteer-item">
-                        <div v-if="organization">
+                        <div v-if="activity.organization">
 
-                            <div v-if="summary">
+                            <div v-if="activity.summary">
                                 <div v-if="index === 0">
                                     <input v-bind:id="'volunteer-item-'+index" 
                                     type="checkbox" class="toggle-item" checked="checked" />
@@ -323,24 +326,24 @@
 
                             <header class="clear">
                                 <div class="header-left">
-                                    <div v-if="position">
+                                    <div v-if="activity.position">
                                         <div class="position">
-                                            {{position}}
+                                            {{activity.position}}
                                         </div>
                                     </div>
-                                    <div class=" organization">
-                                        {{organization}}
+                                    <div class="organization">
+                                        {{activity.organization}}
                                     </div>
                                 </div>
                                 <div class="date">
-                                    <div v-if="startDate">
+                                    <div v-if="activity.startDate">
                                         <span class="startDate">
-                                            {{startDate}}
+                                            {{activity.startDate}}
                                         </span>
                                     </div>
-                                    <div v-if="endDate">
+                                    <div v-if="activity.endDate">
                                         <span class="endDate">
-                                            - {{endDate}}
+                                            - {{activity.endDate}}
                                         </span>
                                     </div>
                                     <div v-else>
@@ -351,45 +354,45 @@
                                 </div>
                             </header>
                         </div>
-                        <div v-if="website">
+                        <div v-if="activity.website">
                             <div class="website">
-                                <a target="_blank" v-bind:href="website">{{website}}</a>
+                                <a target="_blank" v-bind:href="activity.website">{{activity.website}}</a>
                             </div>
                         </div>
-                        <div v-if="location">
+                        <div v-if="activity.location">
                             <span class="location">
                                 <span class="fas fa-map-marker-alt"></span>
-                                <div v-if="city">
+                                <div v-if="activity.city">
                                     <span class="city">
-                                        {{city}},
+                                        {{activity.city}},
                                     </span>
                                 </div>
-                                <div v-if="countryCode">
+                                <div v-if="activity.countryCode">
                                     <span class="countryCode">
-                                        ({{countryCode}})
+                                        ({{activity.countryCode}})
                                     </span>
                                 </div>
-                                <div v-if="region">
+                                <div v-if="activity.region">
                                     <span class="region">
-                                        {{region}}
+                                        {{activity.region}}
                                     </span>
                                 </div>
                             </span>
                         </div>
-                        <div v-if="keywords.length">
+                        <div v-if="activity.keywords && activity.keywords.length">
                             <ul class="keywords">
-                                <div v-for="(entity, index) in keywords" :key="index">
+                                <div v-for="(entity, index) in activity.keywords" :key="index">
                                     <li>{{entity}}</li>
                                 </div>
                             </ul>
                         </div>
                         <div class="item">
-                            <div v-if="summary">
-                                <div class="summary">{{summary}}</div>
+                            <div v-if="activity.summary">
+                                <div class="summary">{{activity.summary}}</div>
                             </div>
-                            <div v-if="highlights.length">
+                            <div v-if="activity.highlights && activity.highlights.length">
                                 <ul class="highlights">
-                                    <div v-for="(entity, index) in highlights" :key="index">
+                                    <div v-for="(entity, index) in activity.highlights" :key="index">
                                         <li>{{entity}}</li>
                                     </div>
                                 </ul>
@@ -401,51 +404,53 @@
         </section>
     </div>
 
-    <div v-if="resume.education.length">
+    <div v-if="education && education.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Education <span class="item-count">({{resume.education.length}})</span></h2>
+                <h2 class='section-title'>Education <span class="item-count">({{education.length}})</span></h2>
             </header>
 
             <section id="education">
-                <div v-for="(entity, index) in resume.education" :key="index">
+                <div v-for="(study, index) in education" :key="index">
                     <section class="education-item">
-                        <div v-if="summary">
+                        <div v-if="study.summary">
                             <div v-if="index === 0">
-                                <input v-bind:id="'education-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
+                                <input v-bind:id="'education-item-'+index" type="checkbox" 
+                                class="toggle-item" checked="checked" />
                             </div>
                             <div v-else>
-                                <input v-bind:id="'education-item-'+index" type="checkbox" class="toggle-item" />
+                                <input v-bind:id="'education-item-'+index" type="checkbox" 
+                                class="toggle-item" />
                             </div>
                             <label v-bind:for="'education-item-'+index"></label>
                         </div>
                         <header class="clear">
                             <div class="header-left">
-                                <div v-if="studyType">
+                                <div v-if="study.studyType">
                                     <div class="studyType">
-                                        {{studyType}}
+                                        {{study.studyType}}
                                     </div>
                                 </div>
-                                <div v-if=" area">
+                                <div v-if="study.area">
                                     <div class="area">
-                                        {{area}}
+                                        {{study.area}}
                                     </div>
                                 </div>
-                                <div v-if="institution">
+                                <div v-if="study.institution">
                                     <div class="institution">
-                                        {{institution}}
+                                        {{study.institution}}
                                     </div>
                                 </div>
                             </div>
                             <div class="date">
-                                <div v-if="startDate">
+                                <div v-if="study.startDate">
                                     <span class="startDate">
-                                        {{startDate}}
+                                        {{study.startDate}}
                                     </span>
                                 </div>
-                                <div v-if="endDate">
+                                <div v-if="study.endDate">
                                     <span class="endDate">
-                                        - {{endDate}}
+                                        - {{study.endDate}}
                                     </span>
                                 </div>
                                 <div v-else>
@@ -456,37 +461,37 @@
                             </div>
                         </header>
 
-                        <div v-if="location">
+                        <div v-if="study.location">
                             <span class="location">
                                 <span class="fas fa-map-marker-alt"></span>
                                 <div v-if="city">
-                                    <span class="city">{{city}}, </span>
+                                    <span class="city">{{study.city}}, </span>
                                 </div>
-                                <div v-if="countryCode">
-                                    <span class="countryCode">({{countryCode}})</span>
+                                <div v-if="study.countryCode">
+                                    <span class="countryCode">({{study.countryCode}})</span>
                                 </div>
-                                <div v-if="region">
-                                    <span class="region">{{region}}</span>
+                                <div v-if="study.region">
+                                    <span class="region">{{study.region}}</span>
                                 </div>
                             </span>
                         </div>
 
-                        <div v-if="courses.length">
+                        <div v-if="study.courses && study.courses.length">
                             <ul class="courses">
-                                <div v-for="(entity, index) in courses" :key="index">
+                                <div v-for="(entity, index) in study.courses" :key="index">
                                     <li>{{entity}}</li>
                                 </div>
                             </ul>
                         </div>
 
                         <div class="item">
-                            <div v-if="gpa">
+                            <div v-if="study.gpa">
                                 <div class='gpa'>
-                                    <strong> Grade:</strong> <span>{{gpa}}</span>
+                                    <strong> Grade:</strong> <span>{{study.gpa}}</span>
                                 </div>
                             </div>
-                            <div v-if="summary">
-                                <div class="summary">{{summary}}</div>
+                            <div v-if="study.summary">
+                                <div class="summary">{{study.summary}}</div>
                             </div>
                         </div>
                     </section>
@@ -495,17 +500,18 @@
         </section>
     </div>
 
-    <div v-if="resume.awards.length">
+    <div v-if="awards && awards.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Awards</h2>
             </header>
             <section id="awards">
-                <div v-for="(entity, index) in resume.awards" :key="index">
+                <div v-for="(award, index) in awards" :key="index">
                     <section class="award-item">
-                        <div v-if="summary">
+                        <div v-if="award.summary">
                             <div v-if="index === 0">
-                                <input v-bind:id="'award-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
+                                <input v-bind:id="'award-item-'+index" type="checkbox" 
+                                class="toggle-item" checked="checked" />
                             </div>
                             <div v-else>
                                 <input v-bind:id="'award-item-'+index" type="checkbox" class="toggle-item" />
@@ -515,27 +521,27 @@
 
                         <header class="clear">
                             <div class="header-left">
-                                <div v-if="title">
+                                <div v-if="award.title">
                                     <div class="title">
-                                        {{title}}
+                                        {{award.title}}
                                     </div>
                                 </div>
-                                <div v-if="awarder">
+                                <div v-if="award.awarder">
                                     <div class="awarder">
-                                        {{awarder}}
+                                        {{award.awarder}}
                                     </div>
                                 </div>
                             </div>
-                            <div v-if="date">
+                            <div v-if="award.date">
                                 <div class="date">
-                                    {{date}}
+                                    {{award.date}}
                                 </div>
                             </div>
                         </header>
 
                         <div class="item">
-                            <div v-if="summary">
-                                <div class="summary">{{summary}}</div>
+                            <div v-if="award.summary">
+                                <div class="summary">{{award.summary}}</div>
                             </div>
                         </div>
                     </section>
@@ -544,17 +550,18 @@
         </section>
     </div>
 
-    <div v-if="resume.publications.length">
+    <div v-if="publications && publications.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Publications</h2>
             </header>
             <section id="publications">
-                <div v-for="(entity, index) in resume.publications" :key="index">
+                <div v-for="(publication, index) in publications" :key="index">
                     <section class="publication-item">
                         <div v-if="summary">
                             <div v-if="index === 0">
-                                <input v-bind:id="'publication-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
+                                <input v-bind:id="'publication-item-'+index" type="checkbox" 
+                                class="toggle-item" checked="checked" />
                             </div>
                             <div v-else>
                                 <input v-bind:id="'publication-item-'+index" type="checkbox" class="toggle-item" />
@@ -564,31 +571,31 @@
 
                         <header class="clear">
                             <div class="header-left">
-                                <div v-if="name">
+                                <div v-if="publication.name">
                                     <span class="name">
-                                        <div v-if="website">
+                                        <div v-if="publication.website">
                                             <span class="website">
-                                                <a target="_blank" v-bind:href="website">{{name}}</a>
+                                                <a target="_blank" v-bind:href="publication.website">{{publication.name}}</a>
                                             </span>
                                         </div>
                                         <div v-else>
-                                            {{name}}
+                                            {{publication.name}}
                                         </div>
                                     </span>
                                 </div>
-                                <div v-if=" publisher">
+                                <div v-if="publication.publisher">
                                     <span class="publisher">
-                                        in {{publisher}}
+                                        in {{publication.publisher}}
                                     </span>
                                 </div>
                             </div>
-                            <div v-if="releaseDate">
+                            <div v-if="publication.releaseDate">
                                 <span class="date">
-                                    {{releaseDate}}
+                                    {{publication.releaseDate}}
                                 </span>
                             </div>
                         </header>
-                        <div v-if="keywords.length">
+                        <div v-if="publication.keywords && publication.keywords.length">
                             <ul class="keywords">
                                 <div v-for="(entity, index) in keywords" :key="index">
                                     <li>{{entity}}</li>
@@ -597,8 +604,8 @@
                         </div>
 
                         <div class="item">
-                            <div v-if="summary">
-                                <div class="summary">{{summary}}</div>
+                            <div v-if="publication.summary">
+                                <div class="summary">{{publication.summary}}</div>
                             </div>
                         </div>
                     </section>
@@ -607,13 +614,13 @@
         </section>
     </div>
 
-    <div v-if="resume.achievements.length">
+    <div v-if="achievements && achievements.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Achievements</h2>
             </header>
             <section id="volunteer">
-                <div v-for="(entity, index) in resume.achievements" :key="index">
+                <div v-for="(entity, index) in achievements" :key="index">
                     <section class="volunteer-item">
                         {{entity}}
                     </section>
@@ -622,30 +629,30 @@
         </section>
     </div>
 
-    <div v-if="resume.openSourceContributions.length">
+    <div v-if="openSourceContributions && openSourceContributions.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Open source contributions
-                  <span class="item-count">({{resume.openSourceContributions.length}})
+                  <span class="item-count">({{openSourceContributions.length}})
                     </span></h2>
             </header>
 
             <section id="work">
-                <div v-for="(entity, index) in resume.openSourceContributions" :key="index">
+                <div v-for="(contribution, index) in openSourceContributions" :key="index">
                     <section class="work-item">
-                        <div v-if="organization">
-                            <div class="position">{{organization}}</div>
+                        <div v-if="contribution.organization">
+                            <div class="position">{{contribution.organization}}</div>
                         </div>
 
-                        <div v-if="website">
+                        <div v-if="contribution.website">
                             <span class="website">
                                 <a target="_blank" 
-                                v-bind:href="website">{{website}}</a>
+                                v-bind:href="contribution.website">{{contribution.website}}</a>
                             </span> </div>
 
                         <div class=" item" id="work-item">
-                            <div v-if="summary">
-                                <div class="summary">{{summary}}</div>
+                            <div v-if="contribution.summary">
+                                <div class="summary">{{contribution.summary}}</div>
                             </div>
 
                         </div>
@@ -655,13 +662,13 @@
         </section>
     </div>
 
-    <div v-if="resume.languages.length">
+    <div v-if="languages && languages.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Languages</h2>
             </header>
             <section id="languages">
-                <div v-for="(entity, index) in resume.languages" :key="index">
+                <div v-for="(language, index) in languages" :key="index">
                     <div class="display">
                         <div v-if="language">
                             <h3 class="language">
@@ -669,13 +676,13 @@
                             </h3>
                         </div>
                         <div class="item">
-                            <div v-if="fluency">
+                            <div v-if="language.fluency">
                                 <div class="level fluency">
-                                    <div v-if="fluencyDisplay">
-                                        <em>{{fluencyDisplay}}</em>
+                                    <div v-if="language.fluencyDisplay">
+                                        <em>{{language.fluencyDisplay}}</em>
                                     </div>
                                     <div v-else>
-                                        <em>{{fluency}}</em>
+                                        <em>{{language.fluency}}</em>
                                     </div>
                                     <div class="bar"></div>
                                 </div>
@@ -687,28 +694,28 @@
         </section>
     </div>
 
-    <div v-if="resume.interests.length">
+    <div v-if="interests && interests.length">
         <section class="section">
             <header>
                 <h2 class='section-title'>Interests</h2>
             </header>
             <section id="interests">
-                <div v-for="(entity, index) in resume.interests" :key="index">
+                <div v-for="(interest, index) in interests" :key="index">
                     <div class="item">
                         <div v-if="name">
                             <h3 class="name">
-                                {{name}}
+                                {{interest.name}}
                             </h3>
                         </div>
-                        <div v-if="keywords.length">
+                        <div v-if="interest.keywords && interest.keywords.length">
                             <ul class="keywords">
-                                <div v-for="(entity, index) in keywords" :key="index">
+                                <div v-for="(entity, index) in interest.keywords" :key="index">
                                     <li>{{entity}}</li>
                                 </div>
                             </ul>
                         </div>
-                        <div v-if="summary">
-                            <div class="summary">{{summary}}</div>
+                        <div v-if="interest.summary">
+                            <div class="summary">{{interest.summary}}</div>
                         </div>
                     </div>
                 </div>
@@ -716,13 +723,13 @@
         </section>
     </div>
 
-    <div v-if="resume.references.length" :key="index">
+    <div v-if="references && references.length" :key="index">
         <section class="section">
             <header>
                 <h2 class='section-title'>References</h2>
             </header>
             <section id="references">
-                <div v-for="(entity, index) in resume.references" :key="index">
+                <div v-for="(entity, index) in references" :key="index">
                     <div class="item">
                         <div v-if="reference">
                             <blockquote class="reference">
@@ -864,6 +871,7 @@ section {
 
 body {
     line-height: 1;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 ol,
@@ -973,7 +981,8 @@ section .location {
 }
 
 #profiles .item {
-    padding: 0;
+    padding-right: 15px;
+    display: inline-block;
 }
 
 #header>#profiles,

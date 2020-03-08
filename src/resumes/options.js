@@ -15,11 +15,18 @@ function getVueOptions (name, otherSource = false) {
     const opt = {
         name: name,
         data () {
+            const resume = {};
+            const jsonData = yaml.load(JSON);
+            for (const key in jsonData) {
+                resume[key] = jsonData[key];
+            }
             if (otherSource) {
-                return {
-                    person: yaml.load(JSON),
+                const resumeData = {
+                    ...resume,
                     terms: terms,
                 };
+                console.log(resumeData);
+                return resumeData;
             }
             return {
                 person: yaml.load(PERSON),

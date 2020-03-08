@@ -24,6 +24,8 @@ body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
-  background: #CCCCCC;
+  font-size: 13px;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
 }
 </style>
