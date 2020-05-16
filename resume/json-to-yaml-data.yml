@@ -155,7 +155,7 @@ achievements:
 - Have successfully completed development and career related courses on Udemy, Coursera
   and pluralsight.
 skills:
-- name: Web Development (Client-side)
+- name: Web Development
   level: Master
   keywords:
   - HTML
@@ -163,7 +163,7 @@ skills:
   - Redux
   - Angular
   - TypeScript
-- name: Web Development (Client-side)
+- name: Web Development
   level: Intermediate
   keywords:
   - React
@@ -200,7 +200,7 @@ skills:
   - Health/ Geolocation
 languages:
 - language: English
-  fluency: Intermediate
+  fluency: Master
 - language: Hindi
   fluency: Master
 - language: German

@@ -8,7 +8,7 @@
                 <h2 class="label">{{basics.label}}</h2>
             </div>
         </div>
-        <div v-else> 
+        <div v-else>
             <div>
                 <h1 class="name">{{basics.name}}</h1>
                 <h2 class="label">{{basics.label}}</h2>
@@ -17,21 +17,21 @@
 
         <div v-if="basics.location">
             <span class="location">
-                <div v-if="basics.address">
+                <span v-if="basics.address">
                     <span class="address">{{basics.address}},</span>
-                </div>
-                <div v-if="basics.location.postalCode">
+                </span>
+                <span v-if="basics.location.postalCode">
                     <span class="postalCode">{{basics.location.postalCode}},</span>
-                </div>
-                <div v-if="basics.location.city">
+                </span>
+                <span v-if="basics.location.city">
                     <span class="city">{{basics.location.city}},</span>
-                </div>
-                <div v-if="basics.location.region">
+                </span>
+                <span v-if="basics.location.region">
                     <span class="region">{{basics.location.region}}</span>
-                </div>
-                <div v-if="basics.location.countryCode">
+                </span>
+                <span v-if="basics.location.countryCode">
                     <span class="countryCode">{{basics.location.countryCode}}</span>
-                </div>
+                </span>
             </span>
         </div>
 
@@ -65,13 +65,11 @@
                     <div class="item">
                         <span v-if="network">
                             <span class="username">
-                               <!-- <span v-bind:class="'fa fa-'+network.network.toLowerCase()"></span> -->
-                               <img v-bind:src="'./src/assets/social-icons/'+network.network.toLowerCase()+'.png'"
-                                />
+                                <!-- <span v-bind:class="'fa fa-'+network.network.toLowerCase()"></span> -->
+                                <img v-bind:src="'./src/assets/social-icons/'+network.network.toLowerCase()+'.png'" />
                                 <span v-if="network.url">
                                     <span class="url">
-                                        <a target="_blank" 
-                                        v-bind:href="network.url">{{network.username}}</a>
+                                        <a target="_blank" v-bind:href="network.url">{{network.username}}</a>
                                     </span>
                                 </span>
                                 <span v-else>
@@ -107,7 +105,7 @@
                             </h3>
                         </div>
                         <div v-if="skill.level">
-                            <div class="level">
+                            <div v-bind:class="'level '+skill.level.toLowerCase()">
                                 <div v-if="skill.levelDisplay">
                                     <em>{{skill.levelDisplay}}</em>
                                 </div>
@@ -140,36 +138,33 @@
             <section id="work">
                 <div v-for="(company, index) in work" :key="index">
                     <section class="work-item">
-                        <div v-if="company.name">
-
+                        <div v-if="company">
                             <div v-if="company.summary">
                                 <div v-if="index === 0">
-                                    <input v-bind:id="'work-item-'+index" 
-                                    type="checkbox" class="toggle-item" checked="checked" />
+                                    <input v-bind:id="'work-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
                                 </div>
                                 <div v-else>
-                                    <input v-bind:id="'work-item-'+index" 
-                                    type="checkbox" class="toggle-item" />
+                                    <input v-bind:id="'work-item-'+index" type="checkbox" class="toggle-item" />
                                 </div>
                                 <label v-bind:for="'work-item-'+index"></label>
                             </div>
-                            <header class="clear">
-                                <div v-if="company.position">
+                            <header class="clear work-header">
+                                <span v-if="company.position">
                                     <div class="position">{{company.position}}</div>
+                                </span>
+                                <div class="company">{{company.company}}
                                 </div>
-                                <div class=" company">{{company.name}}
-                                </div>
-                                <div class="date">
-                                    <div v-if="company.startDate">
-                                        <span class="startDate">{{company.startDate}}</span>
-                                    </div>
-                                    <div v-if="company.endDate">
-                                        <span class="endDate">- {{company.endDate}}</span>
-                                    </div>
-                                    <div v-else>
+                                <span class="date">
+                                    <span v-if="company.startDate">
+                                        <span class="startDate">{{getHumanDate(company.startDate)}}</span>
+                                    </span>
+                                    <span v-if="company.endDate">
+                                        <span class="endDate">- {{getHumanDate(company.endDate)}}</span>
+                                    </span>
+                                    <span v-else>
                                         <span class="endDate">- Current</span>
-                                    </div>
-                                </div>
+                                    </span>
+                                </span>
                             </header>
                         </div>
 
@@ -228,12 +223,10 @@
                     <section class="project-item">
                         <div v-if="project.summary">
                             <div v-if="index === 0">
-                                <input v-bind:id="'project-item-'+index" 
-                                type="checkbox" class="toggle-item" checked="checked" />
+                                <input v-bind:id="'project-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
                             </div>
                             <div v-else>
-                                <input v-bind:id="'project-item-'+index" 
-                                type="checkbox" class="toggle-item" />
+                                <input v-bind:id="'project-item-'+index" type="checkbox" class="toggle-item" />
                             </div>
                             <label v-bind:for="'project-item-'+index"></label>
                         </div>
@@ -245,13 +238,13 @@
                                 </div>
                                 <div v-if=" startDate">
                                     <div class="date">
-                                        <span class="startDate">{{project.startDate}}</span>
-                                        <div v-if="endDate">
-                                            <span class="endDate">- {{project.endDate}}</span>
-                                        </div>
-                                        <div v-else>
+                                        <span class="startDate">{{getHumanDate(project.startDate)}}</span>
+                                        <span v-if="endDate">
+                                            <span class="endDate">- {{getHumanDate(project.endDate)}}</span>
+                                        </span>
+                                        <span v-else>
                                             <span class="endDate">- Current</span>
-                                        </div>
+                                        </span>
                                     </div>
                                 </div>
                             </header>
@@ -308,52 +301,50 @@
                 <h2 class='section-title'>Volunteer</h2>
             </header>
             <section id="volunteer">
-                <div v-for="(activity, index) in volunteer" :key="index">
+                <span v-for="(activity, index) in volunteer" :key="index">
                     <section class="volunteer-item">
-                        <div v-if="activity.organization">
+                        <span v-if="activity.organization">
 
                             <div v-if="activity.summary">
                                 <div v-if="index === 0">
-                                    <input v-bind:id="'volunteer-item-'+index" 
-                                    type="checkbox" class="toggle-item" checked="checked" />
+                                    <input v-bind:id="'volunteer-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
                                 </div>
                                 <div v-else>
-                                    <input v-bind:id="'volunteer-item-'+index" 
-                                    type="checkbox" class="toggle-item" />
+                                    <input v-bind:id="'volunteer-item-'+index" type="checkbox" class="toggle-item" />
                                 </div>
                                 <label v-bind:for="'volunteer-item-'+index"></label>
                             </div>
 
-                            <header class="clear">
+                            <header class="clear volunteer-header">
                                 <div class="header-left">
-                                    <div v-if="activity.position">
-                                        <div class="position">
+                                    <span v-if="activity.position">
+                                        <span class="position">
                                             {{activity.position}}
-                                        </div>
-                                    </div>
-                                    <div class="organization">
+                                        </span>
+                                    </span>
+                                    <span class="organization">
                                         {{activity.organization}}
-                                    </div>
+                                    </span>
                                 </div>
                                 <div class="date">
-                                    <div v-if="activity.startDate">
+                                    <span v-if="activity.startDate">
                                         <span class="startDate">
-                                            {{activity.startDate}}
+                                            {{getHumanDate(activity.startDate)}}
                                         </span>
-                                    </div>
-                                    <div v-if="activity.endDate">
+                                    </span>
+                                    <span v-if="activity.endDate">
                                         <span class="endDate">
-                                            - {{activity.endDate}}
+                                            - {{getHumanDate(activity.endDate)}}
                                         </span>
-                                    </div>
-                                    <div v-else>
+                                    </span>
+                                    <span v-else>
                                         <span class="endDate">
                                             - Current
                                         </span>
-                                    </div>
+                                    </span>
                                 </div>
                             </header>
-                        </div>
+                        </span>
                         <div v-if="activity.website">
                             <div class="website">
                                 <a target="_blank" v-bind:href="activity.website">{{activity.website}}</a>
@@ -399,7 +390,7 @@
                             </div>
                         </div>
                     </section>
-                </div>
+                </span>
             </section>
         </section>
     </div>
@@ -415,49 +406,47 @@
                     <section class="education-item">
                         <div v-if="study.summary">
                             <div v-if="index === 0">
-                                <input v-bind:id="'education-item-'+index" type="checkbox" 
-                                class="toggle-item" checked="checked" />
+                                <input v-bind:id="'education-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
                             </div>
                             <div v-else>
-                                <input v-bind:id="'education-item-'+index" type="checkbox" 
-                                class="toggle-item" />
+                                <input v-bind:id="'education-item-'+index" type="checkbox" class="toggle-item" />
                             </div>
                             <label v-bind:for="'education-item-'+index"></label>
                         </div>
-                        <header class="clear">
+                        <header class="clear education-header">
                             <div class="header-left">
-                                <div v-if="study.studyType">
-                                    <div class="studyType">
+                                <span v-if="study.studyType">
+                                    <span class="studyType">
                                         {{study.studyType}}
-                                    </div>
-                                </div>
-                                <div v-if="study.area">
-                                    <div class="area">
+                                    </span>
+                                </span>
+                                <span v-if="study.area">
+                                    <span class="area">
                                         {{study.area}}
-                                    </div>
-                                </div>
-                                <div v-if="study.institution">
-                                    <div class="institution">
+                                    </span>
+                                </span>
+                                <span v-if="study.institution">
+                                    <span class="institution">
                                         {{study.institution}}
-                                    </div>
-                                </div>
+                                    </span>
+                                </span>
                             </div>
                             <div class="date">
-                                <div v-if="study.startDate">
+                                <span v-if="study.startDate">
                                     <span class="startDate">
-                                        {{study.startDate}}
+                                        {{getHumanDate(study.startDate)}}
                                     </span>
-                                </div>
-                                <div v-if="study.endDate">
+                                </span>
+                                <span v-if="study.endDate">
                                     <span class="endDate">
-                                        - {{study.endDate}}
+                                        - {{getHumanDate(study.endDate)}}
                                     </span>
-                                </div>
-                                <div v-else>
+                                </span>
+                                <span v-else>
                                     <span class="endDate">
                                         - Current
                                     </span>
-                                </div>
+                                </span>
                             </div>
                         </header>
 
@@ -510,8 +499,7 @@
                     <section class="award-item">
                         <div v-if="award.summary">
                             <div v-if="index === 0">
-                                <input v-bind:id="'award-item-'+index" type="checkbox" 
-                                class="toggle-item" checked="checked" />
+                                <input v-bind:id="'award-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
                             </div>
                             <div v-else>
                                 <input v-bind:id="'award-item-'+index" type="checkbox" class="toggle-item" />
@@ -519,24 +507,24 @@
                             <label v-bind:for="'award-item-'+index"></label>
                         </div>
 
-                        <header class="clear">
+                        <header class="clear awards-header">
                             <div class="header-left">
-                                <div v-if="award.title">
-                                    <div class="title">
+                                <span v-if="award.title">
+                                    <span class="title">
                                         {{award.title}}
-                                    </div>
-                                </div>
-                                <div v-if="award.awarder">
-                                    <div class="awarder">
+                                    </span>
+                                </span>
+                                <span v-if="award.awarder">
+                                    <span class="awarder">
                                         {{award.awarder}}
-                                    </div>
-                                </div>
+                                    </span>
+                                </span>
                             </div>
-                            <div v-if="award.date">
+                            <span v-if="award.date">
                                 <div class="date">
-                                    {{award.date}}
+                                    {{getHumanDate(award.date)}}
                                 </div>
-                            </div>
+                            </span>
                         </header>
 
                         <div class="item">
@@ -560,8 +548,7 @@
                     <section class="publication-item">
                         <div v-if="summary">
                             <div v-if="index === 0">
-                                <input v-bind:id="'publication-item-'+index" type="checkbox" 
-                                class="toggle-item" checked="checked" />
+                                <input v-bind:id="'publication-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
                             </div>
                             <div v-else>
                                 <input v-bind:id="'publication-item-'+index" type="checkbox" class="toggle-item" />
@@ -571,29 +558,29 @@
 
                         <header class="clear">
                             <div class="header-left">
-                                <div v-if="publication.name">
+                                <span v-if="publication.name">
                                     <span class="name">
-                                        <div v-if="publication.website">
+                                        <span v-if="publication.website">
                                             <span class="website">
                                                 <a target="_blank" v-bind:href="publication.website">{{publication.name}}</a>
                                             </span>
-                                        </div>
-                                        <div v-else>
+                                        </span>
+                                        <span v-else>
                                             {{publication.name}}
-                                        </div>
+                                        </span>
                                     </span>
-                                </div>
-                                <div v-if="publication.publisher">
+                                </span>
+                                <span v-if="publication.publisher">
                                     <span class="publisher">
                                         in {{publication.publisher}}
                                     </span>
-                                </div>
+                                </span>
                             </div>
-                            <div v-if="publication.releaseDate">
+                            <span v-if="publication.releaseDate">
                                 <span class="date">
                                     {{publication.releaseDate}}
                                 </span>
-                            </div>
+                            </span>
                         </header>
                         <div v-if="publication.keywords && publication.keywords.length">
                             <ul class="keywords">
@@ -633,31 +620,32 @@
         <section class="section">
             <header>
                 <h2 class='section-title'>Open source contributions
-                  <span class="item-count">({{openSourceContributions.length}})
+                    <span class="item-count">({{openSourceContributions.length}})
                     </span></h2>
             </header>
 
             <section id="work">
-                <div v-for="(contribution, index) in openSourceContributions" :key="index">
+                <span v-for="(contribution, index) in openSourceContributions" :key="index">
                     <section class="work-item">
-                        <div v-if="contribution.organization">
+                      <span class="open-source-header">
+                        <span v-if="contribution.organization">
                             <div class="position">{{contribution.organization}}</div>
-                        </div>
+                        </span>
 
-                        <div v-if="contribution.website">
+                        <span v-if="contribution.website">
                             <span class="website">
-                                <a target="_blank" 
-                                v-bind:href="contribution.website">{{contribution.website}}</a>
-                            </span> </div>
-
+                                <a target="_blank" v-bind:href="contribution.website">{{contribution.website}}</a>
+                            </span>
+                        </span>
+                      </span>
                         <div class=" item" id="work-item">
-                            <div v-if="contribution.summary">
-                                <div class="summary">{{contribution.summary}}</div>
-                            </div>
+                            <span v-if="contribution.summary">
+                                <span class="summary">{{contribution.summary}}</span>
+                            </span>
 
                         </div>
                     </section>
-                </div>
+                </span>
             </section>
         </section>
     </div>
@@ -668,16 +656,16 @@
                 <h2 class='section-title'>Languages</h2>
             </header>
             <section id="languages">
-                <div v-for="(language, index) in languages" :key="index">
+                <span v-for="(language, index) in languages" :key="index">
                     <div class="display">
-                        <div v-if="language">
+                        <span v-if="language.language">
                             <h3 class="language">
-                                {{language}}
+                                {{language.language}}
                             </h3>
-                        </div>
+                        </span>
                         <div class="item">
-                            <div v-if="language.fluency">
-                                <div class="level fluency">
+                            <span v-if="language.fluency">
+                                <div v-bind:class="'level fluency '+language.fluency.toLowerCase()">
                                     <div v-if="language.fluencyDisplay">
                                         <em>{{language.fluencyDisplay}}</em>
                                     </div>
@@ -686,10 +674,10 @@
                                     </div>
                                     <div class="bar"></div>
                                 </div>
-                            </div>
+                            </span>
                         </div>
                     </div>
-                </div>
+                </span>
             </section>
         </section>
     </div>
@@ -700,25 +688,25 @@
                 <h2 class='section-title'>Interests</h2>
             </header>
             <section id="interests">
-                <div v-for="(interest, index) in interests" :key="index">
+                <span v-for="(interest, index) in interests" :key="index">
                     <div class="item">
-                        <div v-if="name">
+                        <span v-if="interest.name">
                             <h3 class="name">
                                 {{interest.name}}
                             </h3>
-                        </div>
-                        <div v-if="interest.keywords && interest.keywords.length">
+                        </span>
+                        <span v-if="interest.keywords && interest.keywords.length">
                             <ul class="keywords">
-                                <div v-for="(entity, index) in interest.keywords" :key="index">
+                                <span v-for="(entity, index) in interest.keywords" :key="index">
                                     <li>{{entity}}</li>
-                                </div>
+                                </span>
                             </ul>
-                        </div>
+                        </span>
                         <div v-if="interest.summary">
                             <div class="summary">{{interest.summary}}</div>
                         </div>
                     </div>
-                </div>
+                </span>
             </section>
         </section>
     </div>
@@ -754,9 +742,16 @@ import Vue from 'vue';
 import {
     getVueOptions
 } from './options';
+import moment from 'moment';
 
 const name = 'stackoverflow';
-export default Vue.component(name, getVueOptions(name, true));
+const options = getVueOptions(name, true);
+options.methods = {
+    getHumanDate: (date) => {
+        return moment(date, 'YYYY-MM-DD').format('LL');
+    }
+};
+export default Vue.component(name, options);
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -985,6 +980,25 @@ section .location {
     display: inline-block;
 }
 
+.work-header,
+.volunteer-header,
+.education-header,
+.awards-header {
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 0px;
+
+    .startDate, .endDate, .date {
+      font-weight: 200 !important;
+    }
+}
+
+.open-source-header {
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px 0 3px 0;
+}
+
 #header>#profiles,
 #header>#contact,
 #skills,
@@ -1109,7 +1123,7 @@ section .location {
 .title,
 .language,
 .name {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .company::before,
@@ -1145,7 +1159,7 @@ section .location {
     display: inline-block;
     margin: 2px 2px 2px 0;
     padding: 4px 5px 5px;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     line-height: 1;
     color: #3e6d8e;
     background-color: #dfeaf1;
@@ -1546,6 +1560,10 @@ section .location {
     #skills .item {
         width: calc(100% / 3);
         padding: 0;
+
+        .name {
+            font-weight: 500 !important;
+        }
     }
 
     .highlights {
