@@ -12,6 +12,22 @@ birth:
   year: 1992
   location: Jaipur, India
 
+timeline: 
+- event: Started B.Tech.
+  time: June 2009
+
+-event: Completed B.Tech.
+  time: July 2013
+
+-event: Started hearsid@gmail.com
+  time: May 2013
+
+-event: Started Position as Developer at Tapzo
+  time: Dec 2015
+
+-event: Started Position as Software developer at Morgan Stanley/Wissen
+  time: Apr 2017
+
 experience:
 - company: Morgan Stanley (Consultant)
   position: Software developer

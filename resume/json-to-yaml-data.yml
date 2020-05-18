@@ -22,7 +22,7 @@ basics:
   - network: Github
     username: Gtihub
     url: https://github.com/hearsid
-  - network: Stack Overflow
+  - network: Stackoverflow
     username: StackOverflow
     url: http://stackoverflow.com/users/1685480/siddharth-sharma
   - network: HackerRank

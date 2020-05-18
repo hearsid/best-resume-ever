@@ -67,7 +67,7 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'));
-const imageDir = path.resolve(__dirname, '..') + '/src/assets/social-icons';
+const imageDir = path.resolve(__dirname, '..') + '/src';
 app.use(express.static(imageDir));
 
 var uri = 'http://localhost:' + port

@@ -1,5 +1,6 @@
 ## How to create a build from stackoverflow theme?
-npm run pdf
+source file: json-to-yaml-data.yml
+npm run export
 
 
 

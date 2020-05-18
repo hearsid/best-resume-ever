@@ -35,9 +35,6 @@
             </span>
         </div>
 
-        <div v-if="basics.birthDate">
-        </div>
-
         <div id="contact">
             <div v-if="basics.website">
                 <div class="website">
@@ -66,7 +63,8 @@
                         <span v-if="network">
                             <span class="username">
                                 <!-- <span v-bind:class="'fa fa-'+network.network.toLowerCase()"></span> -->
-                                <img v-bind:src="'./src/assets/social-icons/'+network.network.toLowerCase()+'.png'" />
+                                <img style="width: 15px" 
+                                     v-bind:src="'./assets/social-icons/'+network.network.toLowerCase()+'.png'" />
                                 <span v-if="network.url">
                                     <span class="url">
                                         <a target="_blank" v-bind:href="network.url">{{network.username}}</a>
@@ -126,6 +124,10 @@
                 </span>
             </section>
         </section>
+    </div>
+
+    <div v-if="timeline && timeline.length">
+
     </div>
 
     <div v-if="work && work.length">
