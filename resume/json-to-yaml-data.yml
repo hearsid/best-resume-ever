@@ -2,7 +2,7 @@
 basics:
   name: Siddharth Sharma
   label: Programmer
-  picture: https://instagram.fblr1-3.fna.fbcdn.net/v/t51.2885-19/s320x320/21689002_430989530630809_6661745231035105280_n.jpg?_nc_ht=instagram.fblr1-3.fna.fbcdn.net&_nc_ohc=4H6cAtYpNlsAX8tV3tH&oh=dadf08925276d22ef2dc231891349ef0&oe=5E88EC7F
+  picture: ./assets/profile-images/sid.jpg
   email: hearsid@gmail.com
   summary: I take ownership of the applications/ modules I work on. I consider myself
     a tech enthusiast and like to attend meetup related to same. While my work focuses
@@ -29,7 +29,7 @@ basics:
     username: HackerRank
     url: https://www.hackerrank.com/hearsid
 work:
-- company: Morgan Stanley (Consultant)
+- company: Morgan Stanley/ Wissen
   position: Software developer
   startDate: '2017-04-22'
   endDate: ''
@@ -80,7 +80,7 @@ work:
     liked.
   - A chatting application similar to whatsapp.
 - company: Hearsid
-  position: CEO/President
+  position: Proprietor
   website: http://hearsid.com
   startDate: '2013-05-01'
   endDate: '2015-06-22'

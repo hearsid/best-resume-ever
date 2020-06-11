@@ -79,8 +79,9 @@
             </div>
         </div>
     </header>
-    <div>
-        <vue-horizontal-timeline :items="items" />
+    <div class="timeline">
+        <vue-horizontal-timeline :items="data()" title-centered="true" content-centered="true"
+            timeline-padding="0" timeline-background="#ffffff" clickable="false" />
     </div>
 
     <div v-if="basics.summary">
@@ -125,8 +126,6 @@
             </section>
         </section>
     </div>
-
-    <div v-if="timeline && timeline.length"></div>
 
     <div v-if="work && work.length">
         <section class="section">
@@ -700,18 +699,41 @@ import moment from 'moment';
 
 const name = 'stackoverflow';
 const options = getVueOptions(name, true);
+// interface ICard {
+//     title: string;
+//     content: string
+// }
+
+// inteface IWorkItem {
+//     company: string;
+//     endDate: string;
+//     highlights: Array<string>; 
+//     position: string;
+//     startDate: string;
+//     summary: string;
+// }
+function getTimelineCard(company) {
+    const startDate = new Date(company.startDate);
+    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric',
+        month: 'short',
+        day: '2-digit' });
+    const [{ value: month }, , , , { value: year }] = dateTimeFormat.formatToParts(startDate);
+    const formattedDate = month + ', ' + year;
+    const content = `${company.company} [${company.position}]`;
+    return { title: formattedDate,
+        content };
+}
 options.methods = {
     getHumanDate: date => {
         return moment(date, 'YYYY-MM-DD').format('LL');
     },
-    data: () => {
-        const example1 = {
-            title: 'Title example 1',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ex dolor, malesuada luctus scelerisque ac, auctor vitae risus. Vivamus risus dolor, faucibus a bibendum quis, facilisis eget odio.'
-        };
-        const items = [example1];
+    data: function () {
+        const timelineItems = [];
+        this.work.forEach((work) => {
+            timelineItems.unshift(getTimelineCard(work));
+        });
 
-        return items;
+        return timelineItems;
     }
 };
 export default Vue.component(name, options);
@@ -1591,5 +1613,36 @@ section .location {
     display: inline-block;
     width: 30%;
     vertical-align: top;
+}
+
+::v-deep {
+    .vue-horizontal-timeline {
+        box-shadow: none !important;
+        section.timeline {
+            padding: 0px;
+            height: 170px !important;
+            font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            .title {
+                font-size:12px;
+            }
+            .content {
+                font-size: 11px;
+            }
+            li {
+                background: #ccc !important;
+                .time {
+                    border: 1px solid #e6e6e6 !important;
+                    padding: 0px !important;
+                }
+            }
+            ol {
+                padding: 80px 0 80px 0px !important;
+            }
+            ol li:not(:last-child)::after {
+                background: #ccc ;
+            }
+
+        }
+    }
 }
 </style>
