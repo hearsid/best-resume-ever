@@ -1,7 +1,7 @@
 ## How to create a build from stackoverflow theme?
 source file: json-to-yaml-data.yml
-npm run export
-
+python -m SimpleHTTPServer 4000
+wkhtmltopdf --zoom 4 http://127.0.0.1:4000/resume/stackoverflow resume.pdf 
 
 
 ## Additional instructions for 

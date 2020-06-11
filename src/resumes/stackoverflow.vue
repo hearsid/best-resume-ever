@@ -63,10 +63,9 @@
                         <span v-if="network">
                             <span class="username">
                                 <!-- <span v-bind:class="'fa fa-'+network.network.toLowerCase()"></span> -->
-                                <img style="width: 15px" 
-                                     v-bind:src="'./assets/social-icons/'+network.network.toLowerCase()+'.png'" />
+                                <img style="width: 15px" v-bind:src="'./assets/social-icons/'+network.network.toLowerCase()+'.png'" />
                                 <span v-if="network.url">
-                                    <span class="url">
+                                    <span class="url" style="vertical-align:middle">
                                         <a target="_blank" v-bind:href="network.url">{{network.username}}</a>
                                     </span>
                                 </span>
@@ -80,6 +79,9 @@
             </div>
         </div>
     </header>
+    <div>
+        <vue-horizontal-timeline :items="items" />
+    </div>
 
     <div v-if="basics.summary">
         <section class="section">
@@ -92,15 +94,13 @@
     <div v-if="skills && skills.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Skills</h2>
+                <h2 class="section-title">Skills</h2>
             </header>
             <section id="skills">
                 <span v-for="(skill, index) in skills" :key="index">
                     <div class="item">
                         <div v-if="skill.name">
-                            <h3 class="name">
-                                {{skill.name}}
-                            </h3>
+                            <h3 class="name">{{skill.name}}</h3>
                         </div>
                         <div v-if="skill.level">
                             <div v-bind:class="'level '+skill.level.toLowerCase()">
@@ -126,15 +126,15 @@
         </section>
     </div>
 
-    <div v-if="timeline && timeline.length">
-
-    </div>
+    <div v-if="timeline && timeline.length"></div>
 
     <div v-if="work && work.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Work Experience
-                    <span class="item-count">({{work.length}})</span></h2>
+                <h2 class="section-title">
+                    Work Experience
+                    <span class="item-count">({{work.length}})</span>
+                </h2>
             </header>
 
             <section id="work">
@@ -154,8 +154,7 @@
                                 <span v-if="company.position">
                                     <div class="position">{{company.position}}</div>
                                 </span>
-                                <div class="company">{{company.company}}
-                                </div>
+                                <div class="company">{{company.company}}</div>
                                 <span class="date">
                                     <span v-if="company.startDate">
                                         <span class="startDate">{{getHumanDate(company.startDate)}}</span>
@@ -187,7 +186,8 @@
                         <div v-if="company.website">
                             <span class="website">
                                 <a target="_blank" v-bind:href="company.website">{{company.website}}</a>
-                            </span> </div>
+                            </span>
+                        </div>
                         <div v-if="company.keywords && company.keywords.length">
                             <ul class="keywords">
                                 <div v-for="(entity, index) in company.keywords" :key="index">
@@ -216,7 +216,8 @@
     <div v-if="projects && projects.length">
         <div class="section">
             <header>
-                <h2 class='section-title'>Projects
+                <h2 class="section-title">
+                    Projects
                     <span class="item-count">({{projects.length}})</span>
                 </h2>
             </header>
@@ -261,9 +262,7 @@
                                     <span class="countryCode">({{project.countryCode}})</span>
                                 </div>
                                 <div v-if="project.region">
-                                    <span class="region">
-                                        {{project.region}}
-                                    </span>
+                                    <span class="region">{{project.region}}</span>
                                 </div>
                             </span>
                         </div>
@@ -300,13 +299,12 @@
     <div v-if="volunteer && volunteer.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Volunteer</h2>
+                <h2 class="section-title">Volunteer</h2>
             </header>
             <section id="volunteer">
                 <span v-for="(activity, index) in volunteer" :key="index">
                     <section class="volunteer-item">
                         <span v-if="activity.organization">
-
                             <div v-if="activity.summary">
                                 <div v-if="index === 0">
                                     <input v-bind:id="'volunteer-item-'+index" type="checkbox" class="toggle-item" checked="checked" />
@@ -320,29 +318,19 @@
                             <header class="clear volunteer-header">
                                 <div class="header-left">
                                     <span v-if="activity.position">
-                                        <span class="position">
-                                            {{activity.position}}
-                                        </span>
+                                        <span class="position">{{activity.position}}</span>
                                     </span>
-                                    <span class="organization">
-                                        {{activity.organization}}
-                                    </span>
+                                    <span class="organization">{{activity.organization}}</span>
                                 </div>
                                 <div class="date">
                                     <span v-if="activity.startDate">
-                                        <span class="startDate">
-                                            {{getHumanDate(activity.startDate)}}
-                                        </span>
+                                        <span class="startDate">{{getHumanDate(activity.startDate)}}</span>
                                     </span>
                                     <span v-if="activity.endDate">
-                                        <span class="endDate">
-                                            - {{getHumanDate(activity.endDate)}}
-                                        </span>
+                                        <span class="endDate">- {{getHumanDate(activity.endDate)}}</span>
                                     </span>
                                     <span v-else>
-                                        <span class="endDate">
-                                            - Current
-                                        </span>
+                                        <span class="endDate">- Current</span>
                                     </span>
                                 </div>
                             </header>
@@ -356,19 +344,13 @@
                             <span class="location">
                                 <span class="fas fa-map-marker-alt"></span>
                                 <div v-if="activity.city">
-                                    <span class="city">
-                                        {{activity.city}},
-                                    </span>
+                                    <span class="city">{{activity.city}},</span>
                                 </div>
                                 <div v-if="activity.countryCode">
-                                    <span class="countryCode">
-                                        ({{activity.countryCode}})
-                                    </span>
+                                    <span class="countryCode">({{activity.countryCode}})</span>
                                 </div>
                                 <div v-if="activity.region">
-                                    <span class="region">
-                                        {{activity.region}}
-                                    </span>
+                                    <span class="region">{{activity.region}}</span>
                                 </div>
                             </span>
                         </div>
@@ -400,7 +382,10 @@
     <div v-if="education && education.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Education <span class="item-count">({{education.length}})</span></h2>
+                <h2 class="section-title">
+                    Education
+                    <span class="item-count">({{education.length}})</span>
+                </h2>
             </header>
 
             <section id="education">
@@ -418,36 +403,24 @@
                         <header class="clear education-header">
                             <div class="header-left">
                                 <span v-if="study.studyType">
-                                    <span class="studyType">
-                                        {{study.studyType}}
-                                    </span>
+                                    <span class="studyType">{{study.studyType}}</span>
                                 </span>
                                 <span v-if="study.area">
-                                    <span class="area">
-                                        {{study.area}}
-                                    </span>
+                                    <span class="area">{{study.area}}</span>
                                 </span>
                                 <span v-if="study.institution">
-                                    <span class="institution">
-                                        {{study.institution}}
-                                    </span>
+                                    <span class="institution">{{study.institution}}</span>
                                 </span>
                             </div>
                             <div class="date">
                                 <span v-if="study.startDate">
-                                    <span class="startDate">
-                                        {{getHumanDate(study.startDate)}}
-                                    </span>
+                                    <span class="startDate">{{getHumanDate(study.startDate)}}</span>
                                 </span>
                                 <span v-if="study.endDate">
-                                    <span class="endDate">
-                                        - {{getHumanDate(study.endDate)}}
-                                    </span>
+                                    <span class="endDate">- {{getHumanDate(study.endDate)}}</span>
                                 </span>
                                 <span v-else>
-                                    <span class="endDate">
-                                        - Current
-                                    </span>
+                                    <span class="endDate">- Current</span>
                                 </span>
                             </div>
                         </header>
@@ -456,7 +429,7 @@
                             <span class="location">
                                 <span class="fas fa-map-marker-alt"></span>
                                 <div v-if="city">
-                                    <span class="city">{{study.city}}, </span>
+                                    <span class="city">{{study.city}},</span>
                                 </div>
                                 <div v-if="study.countryCode">
                                     <span class="countryCode">({{study.countryCode}})</span>
@@ -477,8 +450,9 @@
 
                         <div class="item">
                             <div v-if="study.gpa">
-                                <div class='gpa'>
-                                    <strong> Grade:</strong> <span>{{study.gpa}}</span>
+                                <div class="gpa">
+                                    <strong>Grade:</strong>
+                                    <span>{{study.gpa}}</span>
                                 </div>
                             </div>
                             <div v-if="study.summary">
@@ -494,7 +468,7 @@
     <div v-if="awards && awards.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Awards</h2>
+                <h2 class="section-title">Awards</h2>
             </header>
             <section id="awards">
                 <div v-for="(award, index) in awards" :key="index">
@@ -512,20 +486,14 @@
                         <header class="clear awards-header">
                             <div class="header-left">
                                 <span v-if="award.title">
-                                    <span class="title">
-                                        {{award.title}}
-                                    </span>
+                                    <span class="title">{{award.title}}</span>
                                 </span>
                                 <span v-if="award.awarder">
-                                    <span class="awarder">
-                                        {{award.awarder}}
-                                    </span>
+                                    <span class="awarder">{{award.awarder}}</span>
                                 </span>
                             </div>
                             <span v-if="award.date">
-                                <div class="date">
-                                    {{getHumanDate(award.date)}}
-                                </div>
+                                <div class="date">{{getHumanDate(award.date)}}</div>
                             </span>
                         </header>
 
@@ -543,7 +511,7 @@
     <div v-if="publications && publications.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Publications</h2>
+                <h2 class="section-title">Publications</h2>
             </header>
             <section id="publications">
                 <div v-for="(publication, index) in publications" :key="index">
@@ -567,21 +535,15 @@
                                                 <a target="_blank" v-bind:href="publication.website">{{publication.name}}</a>
                                             </span>
                                         </span>
-                                        <span v-else>
-                                            {{publication.name}}
-                                        </span>
+                                        <span v-else>{{publication.name}}</span>
                                     </span>
                                 </span>
                                 <span v-if="publication.publisher">
-                                    <span class="publisher">
-                                        in {{publication.publisher}}
-                                    </span>
+                                    <span class="publisher">in {{publication.publisher}}</span>
                                 </span>
                             </div>
                             <span v-if="publication.releaseDate">
-                                <span class="date">
-                                    {{publication.releaseDate}}
-                                </span>
+                                <span class="date">{{publication.releaseDate}}</span>
                             </span>
                         </header>
                         <div v-if="publication.keywords && publication.keywords.length">
@@ -606,13 +568,11 @@
     <div v-if="achievements && achievements.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Achievements</h2>
+                <h2 class="section-title">Achievements</h2>
             </header>
             <section id="volunteer">
                 <div v-for="(entity, index) in achievements" :key="index">
-                    <section class="volunteer-item">
-                        {{entity}}
-                    </section>
+                    <section class="volunteer-item">{{entity}}</section>
                 </div>
             </section>
         </section>
@@ -621,30 +581,30 @@
     <div v-if="openSourceContributions && openSourceContributions.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Open source contributions
-                    <span class="item-count">({{openSourceContributions.length}})
-                    </span></h2>
+                <h2 class="section-title">
+                    Open source contributions
+                    <span class="item-count">({{openSourceContributions.length}})</span>
+                </h2>
             </header>
 
             <section id="work">
                 <span v-for="(contribution, index) in openSourceContributions" :key="index">
                     <section class="work-item">
-                      <span class="open-source-header">
-                        <span v-if="contribution.organization">
-                            <div class="position">{{contribution.organization}}</div>
-                        </span>
+                        <span class="open-source-header">
+                            <span v-if="contribution.organization">
+                                <div class="position">{{contribution.organization}}</div>
+                            </span>
 
-                        <span v-if="contribution.website">
-                            <span class="website">
-                                <a target="_blank" v-bind:href="contribution.website">{{contribution.website}}</a>
+                            <span v-if="contribution.website">
+                                <span class="website">
+                                    <a target="_blank" v-bind:href="contribution.website">{{contribution.website}}</a>
+                                </span>
                             </span>
                         </span>
-                      </span>
-                        <div class=" item" id="work-item">
+                        <div class="item" id="work-item">
                             <span v-if="contribution.summary">
                                 <span class="summary">{{contribution.summary}}</span>
                             </span>
-
                         </div>
                     </section>
                 </span>
@@ -655,15 +615,13 @@
     <div v-if="languages && languages.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Languages</h2>
+                <h2 class="section-title">Languages</h2>
             </header>
             <section id="languages">
                 <span v-for="(language, index) in languages" :key="index">
                     <div class="display">
                         <span v-if="language.language">
-                            <h3 class="language">
-                                {{language.language}}
-                            </h3>
+                            <h3 class="language">{{language.language}}</h3>
                         </span>
                         <div class="item">
                             <span v-if="language.fluency">
@@ -687,15 +645,13 @@
     <div v-if="interests && interests.length">
         <section class="section">
             <header>
-                <h2 class='section-title'>Interests</h2>
+                <h2 class="section-title">Interests</h2>
             </header>
             <section id="interests">
                 <span v-for="(interest, index) in interests" :key="index">
                     <div class="item">
                         <span v-if="interest.name">
-                            <h3 class="name">
-                                {{interest.name}}
-                            </h3>
+                            <h3 class="name">{{interest.name}}</h3>
                         </span>
                         <span v-if="interest.keywords && interest.keywords.length">
                             <ul class="keywords">
@@ -716,20 +672,16 @@
     <div v-if="references && references.length" :key="index">
         <section class="section">
             <header>
-                <h2 class='section-title'>References</h2>
+                <h2 class="section-title">References</h2>
             </header>
             <section id="references">
                 <div v-for="(entity, index) in references" :key="index">
                     <div class="item">
                         <div v-if="reference">
-                            <blockquote class="reference">
-                                &#8220;&#32;{{reference}}&#32;&#8221;
-                            </blockquote>
+                            <blockquote class="reference">&#8220;&#32;{{reference}}&#32;&#8221;</blockquote>
                         </div>
                         <div v-if="name">
-                            <div class="name">
-                                {{name}}
-                            </div>
+                            <div class="name">{{name}}</div>
                         </div>
                     </div>
                 </div>
@@ -749,8 +701,17 @@ import moment from 'moment';
 const name = 'stackoverflow';
 const options = getVueOptions(name, true);
 options.methods = {
-    getHumanDate: (date) => {
+    getHumanDate: date => {
         return moment(date, 'YYYY-MM-DD').format('LL');
+    },
+    data: () => {
+        const example1 = {
+            title: 'Title example 1',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ex dolor, malesuada luctus scelerisque ac, auctor vitae risus. Vivamus risus dolor, faucibus a bibendum quis, facilisis eget odio.'
+        };
+        const items = [example1];
+
+        return items;
     }
 };
 export default Vue.component(name, options);
@@ -894,7 +855,7 @@ table {
 }
 
 /****************
-*	COMMONS
+*	COMMONS 
 ****************/
 
 body,
@@ -915,9 +876,8 @@ p {
 
 a {
     /*color: #0095ff;*/
-    color: #0095F2;
+    color: #0095f2;
     text-decoration: none;
-
 }
 
 a:hover {
@@ -990,8 +950,10 @@ section .location {
     padding: 10px;
     padding-left: 0px;
 
-    .startDate, .endDate, .date {
-      font-weight: 200 !important;
+    .startDate,
+    .endDate,
+    .date {
+        font-weight: 200 !important;
     }
 }
 

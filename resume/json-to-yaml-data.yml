@@ -20,7 +20,7 @@ basics:
     username: Linkedin
     url: https://www.linkedin.com/in/hearsid/
   - network: Github
-    username: Gtihub
+    username: Github
     url: https://github.com/hearsid
   - network: Stackoverflow
     username: StackOverflow
@@ -143,13 +143,6 @@ awards:
   awarder: JKLU
   summary: Participated and won various competitions related to creation and operation
     of robos like robo war.
-publications:
-- name: Angular performace measurement using chrome devtools with statistics
-  publisher: Medium
-  releaseDate: ''
-  website: http://medium.com/@hearsid
-  summary: Angular performance analysis with statistics showing heap size, loading
-    time and memory consumed at various stages.
 achievements:
 - Have Gold badge in more than 4 tracks on hackerrank.
 - Have successfully completed development and career related courses on Udemy, Coursera
