@@ -84,14 +84,6 @@
             timeline-padding="0" timeline-background="#ffffff" clickable="false" />
     </div>
 
-    <div v-if="basics.summary">
-        <section class="section">
-            <section class="main-summary">
-                <div>{{basics.summary}}</div>
-            </section>
-        </section>
-    </div>
-
     <div v-if="skills && skills.length">
         <section class="section">
             <header>
@@ -127,6 +119,14 @@
         </section>
     </div>
 
+    <div v-if="basics.summary">
+        <section class="section">
+            <section class="main-summary">
+                <div>{{basics.summary}}</div>
+            </section>
+        </section>
+    </div>
+x2d
     <div v-if="work && work.length">
         <section class="section">
             <header>
@@ -746,6 +746,9 @@ export default Vue.component(name, options);
 * 	reset from
 * 	http://meyerweb.com/eric/tools/css/reset/
 *******************************************/
+html {
+  -webkit-print-color-adjust: exact;
+}
 
 html,
 body,
