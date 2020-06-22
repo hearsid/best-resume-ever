@@ -68,9 +68,20 @@ const convert = async () => {
             ) {
                 fs.mkdirSync(fullDirectoryPath);
             }
+            const header = `<style>#header, #footer { padding: 0 !important; }</style>
+                <div class="header" style="padding: 0 !important; margin: 0; -webkit-print-color-adjust: exact; color: white; width: 100%; text-align: left; font-size: 12px;">
+                </div>`;
+            const footer = `<style>#header, #footer { padding: 0 !important; }</style
+                <div class="footer" style="padding: 0 !important; margin: 0; -webkit-print-color-adjust: exact; color: white; width: 100%; text-align: right; font-size: 12px;">
+                </div>`;
+
             await page.pdf({
                 path: fullDirectoryPath + dir.name + '.pdf',
-                format: 'A4'
+                format: 'A4',
+                displayHeaderFooter: true,
+                headerTemplate: header,
+                footerTemplate: footer,
+                margin: { top: '2cm', bottom: '2cm' }
             });
             await browser.close();
         });

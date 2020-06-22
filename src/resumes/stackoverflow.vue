@@ -727,7 +727,7 @@ function getEducationTimeline(study) {
         day: '2-digit' });
     const [{ value: month }, , , , { value: year }] = dateTimeFormat.formatToParts(startDate);
     const formattedDate = month + ', ' + year;
-    const content = `Started ${study.studyType}`;
+    const content = `${study.studyType}`;
     return { title: formattedDate,
         content };
 }
@@ -1481,150 +1481,151 @@ section .location {
     }
 }
 
-@media print {
-    #resume {
-        margin: 0.1em;
-        padding: 0.1em;
-        -ms-word-wrap: break-word;
-        word-wrap: break-word;
-        line-height: 1.25;
-    }
+// @media print {
+//     #resume {
+//         margin: 0.1em;
+//         padding: 0.1em;
+//         -ms-word-wrap: break-word;
+//         word-wrap: break-word;
+//         line-height: 1.25;
+//     }
 
-    @page {
-        margin: 1cm 1.4cm;
-    }
+//     @page {
+//         margin: 1cm 1.4cm;
+//     }
 
-    .item-count {
-        display: none;
-    }
+//     .item-count {
+//         display: none;
+//     }
 
-    .company::before,
-    .institution::before,
-    .organization::before,
-    .awarder::before {
-        content: "at ";
-    }
+//     .company::before,
+//     .institution::before,
+//     .organization::before,
+//     .awarder::before {
+//         content: "at ";
+//     }
 
-    .main-summary {
-        padding: 0;
-        background: transparent;
-    }
+//     .main-summary {
+//         padding: 0;
+//         background: transparent;
+//     }
 
-    .section {
-        margin: 0.8rem 0;
-        padding: 0;
-    }
+//     .section {
+//         margin: 0.8rem 0;
+//         padding: 0;
+//     }
 
-    .section header {
-        padding-bottom: 0.15rem;
-    }
+//     .section header {
+//         padding-bottom: 0.15rem;
+//     }
 
-    .section .location {
-        padding-bottom: 0.15rem;
-    }
+//     .section .location {
+//         padding-bottom: 0.15rem;
+//     }
 
-    .section>section>section {
-        margin: 0 0 1em 0;
-    }
+//     .section>section>section {
+//         margin: 0 0 1em 0;
+//     }
 
-    .section>section>section:last-of-type {
-        margin: 0;
-    }
+//     .section>section>section:last-of-type {
+//         margin: 0;
+//     }
 
-    .stack-overflow::after {
-        content: "";
-    }
+//     .stack-overflow::after {
+//         content: "";
+//     }
 
-    .fa.social {
-        color: #828386;
-    }
+//     .fa.social {
+//         color: #828386;
+//     }
 
-    ul {
-        margin-top: 0.4em;
-    }
+//     ul {
+//         margin-top: 0.4em;
+//     }
 
-    ul,
-    li {
-        padding: 0;
-    }
+//     ul,
+//     li {
+//         padding: 0;
+//     }
 
-    ul.keywords li,
-    ul.courses li {
-        margin: 0;
-        padding: 0;
-        font-size: 0.8rem;
-        background: transparent;
-    }
+//     ul.keywords li,
+//     ul.courses li {
+//         margin: 0;
+//         padding: 0;
+//         font-size: 0.8rem;
+//         background: transparent;
+//     }
 
-    ul.keywords li::after,
-    ul.courses li::after {
-        padding: 0 0 0 0.1rem;
-        content: " |";
-    }
+//     ul.keywords li::after,
+//     ul.courses li::after {
+//         padding: 0 0 0 0.1rem;
+//         content: " |";
+//     }
 
-    ul.keywords::before,
-    ul.courses::before {
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
+//     ul.keywords::before,
+//     ul.courses::before {
+//         font-size: 0.8rem;
+//         font-weight: 600;
+//     }
 
-    #skills .item {
-        width: calc(100% / 3);
-        padding: 0;
+//     #skills .item {
+//         width: calc(100% / 3);
+//         padding: 0;
 
-        .name {
-            font-weight: 500 !important;
-        }
-    }
+//         .name {
+//             font-weight: 500 !important;
+//         }
+//     }
 
-    .highlights {
-        margin: 0.5em 0 0 0;
-    }
+//     .highlights {
+//         margin: 0.5em 0 0 0;
+//     }
 
-    ul.keywords::before {
-        content: "Skills acquired: ";
-    }
+//     ul.keywords::before {
+//         content: "Skills acquired: ";
+//     }
 
-    #skills .keywords::before {
-        content: none;
-    }
+//     #skills .keywords::before {
+//         content: none;
+//     }
 
-    .section p {
-        margin: 0;
-        padding: 0;
-    }
+//     .section p {
+//         margin: 0;
+//         padding: 0;
+//     }
 
-    ul.courses::before {
-        content: "Major courses: ";
-    }
+//     ul.courses::before {
+//         content: "Major courses: ";
+//     }
 
-    ul.keywords li:last-of-type::after,
-    ul.courses li:last-of-type::after {
-        content: "";
-    }
+//     ul.keywords li:last-of-type::after,
+//     ul.courses li:last-of-type::after {
+//         content: "";
+//     }
 
-    .level em {
-        font-style: normal;
-        padding: 0.1em 0;
-    }
+//     .level em {
+//         font-style: normal;
+//         padding: 0.1em 0;
+//     }
 
-    .level .bar {
-        display: none;
-    }
+//     .level .bar {
+//         display: none;
+//     }
 
-    #profiles .item {
-        padding: 0;
-    }
+//     #profiles .item {
+//         padding: 0;
+//     }
 
-    .item.display {
-        display: block;
-        opacity: 1 !important;
-    }
+//     .item.display {
+//         display: block;
+//         opacity: 1 !important;
+//     }
 
-    .fa-map-marker-alt:before {
-        padding-left: 0.1em;
-    }
-}
+//     .fa-map-marker-alt:before {
+//         padding-left: 0.1em;
+//     }
+    
+// }
 
 /** added by hearsid to allow wkhtmltopdf to create correct PDF, zoom 5 **/
 
@@ -1648,25 +1649,30 @@ section .location {
             height: 170px !important;
             font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             .title {
-                font-size:12px;
+                font-size:10px;
             }
             .content {
-                font-size: 11px;
+                font-size: 8px;
             }
             li {
-                background: #ccc !important;
-                width: 110px !important;
+                background: #dfeaf1 !important;
+                width: 100px !important;
                 .time {
                     border: 1px solid #e6e6e6 !important;
                     padding: 0px !important;
+                    min-width: 180px !important;
+                }
+
+                &:last-child {
+                    width: 300px !important;
                 }
             }
             ol {
                 padding: 80px 0 80px 0px !important;
             }
             ol li:not(:last-child)::after {
-                background: #ccc ;
-                left: calc(100% - 70px) !important;
+                background: #dfeaf1 ;
+                left: calc(100% - 60px) !important;
             }
 
         }
