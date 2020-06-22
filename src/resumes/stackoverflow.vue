@@ -44,7 +44,7 @@
             </div>
             <div v-if="basics.email">
                 <div class="email">
-                    <span class="far fa-envelope"></span>
+                    <span class="fa fa-envelope"></span>
                     <a v-bind:href="'mailto:'+basics.email">{{basics.email}}</a>
                 </div>
             </div>
@@ -61,17 +61,13 @@
                 <span v-for="(network, index) in basics.profiles" :key="index">
                     <div class="item">
                         <span v-if="network">
-                            <span class="username">
+                            <span class="username network-block" v-if="network.url">
                                 <!-- <span v-bind:class="'fa fa-'+network.network.toLowerCase()"></span> -->
                                 <img style="width: 15px" v-bind:src="'./assets/social-icons/'+network.network.toLowerCase()+'.png'" />
-                                <span v-if="network.url">
-                                    <span class="url" style="vertical-align:middle">
                                         <a target="_blank" v-bind:href="network.url">{{network.username}}</a>
-                                    </span>
-                                </span>
-                                <span v-else>
+                                <!-- <span v-else>
                                     <span>{{network.username}}</span>
-                                </span>
+                                </span> -->
                             </span>
                         </span>
                     </div>
@@ -126,7 +122,7 @@
             </section>
         </section>
     </div>
-x2d
+
     <div v-if="work && work.length">
         <section class="section">
             <header>
@@ -723,14 +719,31 @@ function getTimelineCard(company) {
     return { title: formattedDate,
         content };
 }
+
+function getEducationTimeline(study) {
+    const startDate = new Date(study.startDate);
+    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric',
+        month: 'short',
+        day: '2-digit' });
+    const [{ value: month }, , , , { value: year }] = dateTimeFormat.formatToParts(startDate);
+    const formattedDate = month + ', ' + year;
+    const content = `Started ${study.studyType}`;
+    return { title: formattedDate,
+        content };
+}
 options.methods = {
     getHumanDate: date => {
         return moment(date, 'YYYY-MM-DD').format('LL');
     },
     data: function () {
         const timelineItems = [];
+
         this.work.forEach((work) => {
             timelineItems.unshift(getTimelineCard(work));
+        });
+
+        this.education.forEach((study) => {
+            timelineItems.unshift(getEducationTimeline(study));
         });
 
         return timelineItems;
@@ -965,6 +978,15 @@ section .location {
 #profiles .item {
     padding-right: 15px;
     display: inline-block;
+
+    .network-block {
+        display: flex;
+        align-items: center;
+
+        &>img {
+            padding-right: 7px;
+        }
+    }
 }
 
 .work-header,
@@ -1633,6 +1655,7 @@ section .location {
             }
             li {
                 background: #ccc !important;
+                width: 110px !important;
                 .time {
                     border: 1px solid #e6e6e6 !important;
                     padding: 0px !important;
@@ -1643,6 +1666,7 @@ section .location {
             }
             ol li:not(:last-child)::after {
                 background: #ccc ;
+                left: calc(100% - 70px) !important;
             }
 
         }
