@@ -4,7 +4,7 @@ import {
 } from '../../resume/data.yml';
 import {
     JSON
-} from '../../resume/json-to-yaml-data.yml';
+} from '../../resume/priyanka.yml';
 import {
     terms
 } from '../terms';

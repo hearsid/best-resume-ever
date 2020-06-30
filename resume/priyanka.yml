@@ -1,0 +1,153 @@
+/* #*/ export const JSON = `
+basics:
+  name: Priyanka K
+  label: iOS Developer
+  picture:
+  email: priyankamurthy28@gmail.com
+  summary: Overall 3 years of experience in the IT industry.I take ownership of the applications I work on. I consider myself a tech enthusiast and like to attend meetup related to same. While my work focuses on creating mobile applications.
+  location:
+    city: Bangalore
+    countryCode: "(IND)"
+    region: Karnataka
+    website:  priyankamurthy28@gmail.com
+  phone: 7899417625
+
+  profiles:
+  - network: Linkedin
+    username: Linkedin
+    url: https://www.linkedin.com/in/priyanka-murthy-849a7b6b/
+  - network: Github
+    username: Github
+    url: https://github.com/priyankamurthy28
+
+work:
+- company: Visionet Systems Pvt Ltd
+  position: SmartDoX
+  startDate: '2019-09-13'
+  website: https://apps.apple.com/us/app/smartdox/id1467338021
+  endDate: ''
+  summary: IOS Development using Xcode 10, Swift
+  highlights:
+  - This is enterprise application which is used by Coreteva employees where we are having different role logins. Where field executives will perform the activities and those activites can be viewed by the top level roles.
+  - Understanding the requirements of the system, Analysis of the specification provided by the client, Designing the views using Storyboard,Testing and debugging the application.
+- company: Visionet Systems Pvt Ltd
+  position: Paxena
+  startDate: '2019-09-13'
+  website:
+  endDate: ''
+  summary: IOS Development using Xcode 10, Swift
+  highlights:
+  - Paxena is enterprise application to convey latest trends and information about best practice in agriculture and we were displaying videos and articles for the same.
+  - Understanding the requirements of the system, Analysis of the specification provided by the client, Designing the views using Storyboard,Testing and debugging the application.
+- company: Tata Elxsi (Primus Global Technologies Pvt Ltd)
+  position: DSTV NOW
+  website: https://apps.apple.com/us/app/dstv-now/id467168196
+  startDate: '2018-07-25'
+  endDate: '2018-12-31'
+  summary: IOS Development using Xcode 10, Swift
+  highlights:
+  - DSTV Now is a video streaming application which contains videos related to entertainment, sports, kids, learning etc. It also provided live streaming of videos.
+  - Understanding the requirements of the system, Analysis of the specification provided by the client, Designing the views using Storyboard,Testing and debugging the application.
+- company: Theorem India Pvt Ltd (ASAP Infosystems)
+  position: Sidearm Sports
+  website: https://itunes.apple.com/us/developer/sidearm­sports/id329195539
+  startDate: '2017-05-11'
+  endDate: '2018-03-18'
+  summary: IOS Development using Swift 4.0,Xcode
+  highlights:
+  - Sidearm sports is an app developed in both iOS & android platform.It is a perfect app for sports junkies. SIDEARM Sports is the app that makes possible for collegiate sports fans to follow their favorite teams no matter if they’re across town, across the country, or across the world. it provides livestats, and video streaming for colleges, universities and high schools across North America.
+  - Understanding the requirements of the system, Analysis of the specification provided by the client, Designing the views using Storyboard,Testing and debugging the application.
+- company: Theorem India Pvt Ltd (ASAP Infosystems)
+  position: Mighty App
+  website: https://itunes.apple.com/us/app/mighty­audio/id1164822276?mt=8
+  startDate: '2017-05-11'
+  endDate: '2018-03-18'
+  summary: IOS Development using Swift 2.3 & 3.0
+  highlights:
+  - Mighty is a wearable lifestyle product that is used for streaming and listening music. mighty device build for both iOS and android platform.Mighty device is used for storing the music tracks offline with physical buttons for operations like play/pause, volume up/down etc.Mighty device is used to download the tracks from the popular 3rd party partners like Spotify directly to mighty device once triggered via app. Mighty is a simpler way to listen to your spotify music on­ the ­go.Enjoy life’s adventures without worrying about fragile phones,data overages & battery drain.
+  - Understanding the requirements of the system, Analysis of the specification provided by the client, Designing the views using Storyboard,Testing and debugging the application.
+- company: Inflexion Technlogies Pvt Ltd
+  position: Route Joot
+  website: https://itunes.apple.com/in/app/routejoot/id1071397481?mt=8
+  startDate: '2016-01-18'
+  endDate: '2016-07-11'
+  summary: IOS Development using Swift 2.3
+  highlights:
+  - Route Joot is a rider's application which is built on iOS and android platforms. This app helps an individual rider or group of rider to track their rides and share the experience. Riders can track the co­-rider using GPS technology which ensures the riders are connected during rides. This app enables the riders to build a community across various groups based on their interests. Also the app has SOS feature which alert the co riders and emergency contact during emergency.
+  - Understanding the requirements of the system, Analysis of the specification provided by the client,Designing the views using Storyboard, Testing and debugging the application.
+volunteer:
+- organization: CSP- Choti Si Phahal
+  position: Volunteer
+  startDate: '2014-01-01'
+  summary: We are a group of friends who conduct various events to help old age homes
+    and ophanages. Please feel free to contact me if you would like to attend our
+    visits and help in giving back to the society.
+- organization: Toastmasters
+  position: Member
+  startDate: '2015-01-01'
+  summary: Gave upto CC2 in toastmasters and plan to keep trying to grow my leadership
+    and communication skills with help of club and club members.
+education:
+- institution: C Byre Gowda institue of technolgy
+  area: Electronics and Communication
+  studyType: B.Tech.
+  startDate: '2010-07-01'
+  endDate: '2014-06-01'
+- institution: BGS Pre University Kolar
+  area: Maths and Science
+  studyType: Senior Secondary
+  startDate: '2008-06-01'
+  endDate: '2010-07-01'
+skills:
+- name: iOS Development
+  level: Master
+  keywords:
+  - Swift
+  - Objective C
+  - Redux
+- name: iOS Testing
+  level: Intermediate
+  keywords:
+  - unit testing
+- name: Programming
+  level: Intermediate
+  keywords:
+  - Algorithms
+  - Data Structures
+  - Java
+  - Design patterns
+  - Problem solving
+  - Git
+- name: Practices
+  level: Master
+  keywords:
+  - Jira
+  - Agile methodology
+- name: Database
+  level: Intermediate
+  keywords:
+  - CoreData
+  - SQLite
+languages:
+- language: English
+  fluency: Master
+- language: Telugu
+  fluency: Master
+- language: Kannada
+  fluency: Master
+- language: Hindi
+  fluency: Master
+interests:
+- name: TV Serials
+  keywords:
+  - FRIENDS
+  - How I met your mother
+  - Cosmos
+- name: Reading
+  keywords:
+  - Technology
+  - Psychology
+  - News
+references: []
+projects: []
+`

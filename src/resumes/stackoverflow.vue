@@ -715,7 +715,7 @@ function getTimelineCard(company) {
         day: '2-digit' });
     const [{ value: month }, , , , { value: year }] = dateTimeFormat.formatToParts(startDate);
     const formattedDate = month + ', ' + year;
-    const content = `${company.company} [${company.position}]`;
+    const content = `${company.company}`;
     return { title: formattedDate,
         content };
 }
@@ -737,9 +737,13 @@ options.methods = {
     },
     data: function () {
         const timelineItems = [];
-
+        let prevCompany = '';
         this.work.forEach((work) => {
-            timelineItems.unshift(getTimelineCard(work));
+            const company = work.company;
+            if (company !== prevCompany) {
+                timelineItems.unshift(getTimelineCard(work));
+            }
+            prevCompany = company;
         });
 
         this.education.forEach((study) => {
