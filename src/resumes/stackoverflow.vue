@@ -1645,6 +1645,7 @@ section .location {
     .vue-horizontal-timeline {
         box-shadow: none !important;
         section.timeline {
+            overflow: hidden;
             padding: 0px;
             height: 170px !important;
             font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -1673,6 +1674,10 @@ section .location {
             ol li:not(:last-child)::after {
                 background: #dfeaf1 ;
                 left: calc(100% - 60px) !important;
+            }
+
+            li:nth-child(odd) .time::before {
+                top: 98% !important;
             }
 
         }
