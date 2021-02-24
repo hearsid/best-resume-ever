@@ -1,7 +1,7 @@
 /* #*/ export const JSON = `
 basics:
   name: Siddharth Sharma
-  label: Programmer
+  label: Among Top Coders on HackerRank & StackOverflow
   picture: ./assets/profile-images/sid.jpg
   email: hearsid@gmail.com
   summary: I take ownership of the applications/ modules I work on. I consider myself
@@ -30,7 +30,7 @@ basics:
     url: https://www.hackerrank.com/hearsid
 work:
 - company: Morgan Stanley/ Wissen
-  position: Software developer
+  position: SSE
   startDate: '2017-04-22'
   endDate: ''
   summary: Conversion of existing applications with angular for client side and revamping
@@ -165,13 +165,9 @@ skills:
   level: Intermediate
   keywords:
   - Python
-  - Nodejs
   - Algorithms
   - Data Structures
-  - Java
   - Design patterns
-  - Problem solving
-  - Git
 - name: Practices
   level: Master
   keywords:

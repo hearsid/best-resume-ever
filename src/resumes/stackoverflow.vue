@@ -1662,6 +1662,9 @@ section .location {
                     border: 1px solid #e6e6e6 !important;
                     padding: 0px !important;
                     min-width: 180px !important;
+                    &::before {
+                        content: none !important;
+                    }
                 }
 
                 &:last-child {
